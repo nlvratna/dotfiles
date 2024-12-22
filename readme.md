@@ -35,6 +35,9 @@ I need to stow to setup link
 ``` sudo apt install stow```
 
 fzf 
+
 ``` sudo apt install fzf```
+
 zoxide 
+
 ``` curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh``
