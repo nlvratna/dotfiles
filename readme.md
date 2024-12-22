@@ -1,8 +1,7 @@
 These are my present dotfiles 
 
 
-I am using zsh as my shell to setup zsh 
-
+install zsh if not there
 ``` sudo apt install zsh ```
 
 and after installing that  I need to do this 
