@@ -38,7 +38,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 tmux installtion 
 
-``` sudo apt install tmux 
+
+```  
+sudo apt install tmux
 
 ```
 
