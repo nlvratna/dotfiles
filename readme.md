@@ -18,7 +18,23 @@ install oh-my-zsh
 
 ``` sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
 
+Auto suggestions plugin
+
+``` git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ```
+
+zsh syntax highlighting
+
+``` git clone https://github.com/zsh-users/zsh-syntax-highlighting.git```
+
+tmux installtion 
+
+``` sudo apt install tmux ```
 
 I need to stow to setup link
 
 ``` sudo apt install stow```
+
+fzf 
+``` sudo apt install fzf```
+zoxide 
+``` curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh``
