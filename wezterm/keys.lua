@@ -3,16 +3,16 @@
 -- local mux = wezterm.mux
 -- local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 -- local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
-
+--
 -- local keys = {
-
+--
 -- 	-- -- Disable Alt-Enter combination (already used in tmux to split pane)
 -- 	-- {
 -- 	--     key = 'Enter',
 -- 	--     mods = 'ALT',
 -- 	--     action = act.DisableDefaultAssignment,
 -- 	-- },
-
+--
 -- 	-- Copy mode
 -- 	{
 -- 		key = "[",
@@ -60,7 +60,7 @@
 -- 		mods = "LEADER",
 -- 		action = act.CloseCurrentTab({ confirm = true }),
 -- 	},
-
+--
 -- 	{
 -- 		-- |
 -- 		key = "v",
@@ -80,7 +80,7 @@
 -- 			size = { Percent = 50 },
 -- 		}),
 -- 	},
-
+--
 -- 	-- CTRL + (h,j,k,l) to move between panes
 -- 	-- {
 -- 	-- 	key = "h",
@@ -102,7 +102,7 @@
 -- 	-- 	mods = "CTRL",
 -- 	-- 	action = act({ EmitEvent = "move-right" }),
 -- 	-- },
-
+--
 -- 	-- -- ALT + (h,j,k,l) to resize panes
 -- 	-- {
 -- 	-- 	key = "h",
@@ -164,7 +164,7 @@
 -- 		mods = "LEADER",
 -- 		action = act.AttachDomain("unix"),
 -- 	},
-
+--
 -- 	-- Detach from muxer
 -- 	{
 -- 		key = "d",
@@ -189,7 +189,7 @@
 -- 			end),
 -- 		}),
 -- 	},
-
+--
 -- 	{
 -- 		key = "q", -- save workspaces
 -- 		mods = "LEADER|CTRL",
@@ -203,15 +203,15 @@
 -- 		action = resurrect.window_state.save_window_action(),
 -- 	},
 -- 	{
--- 		key = "t", 
+-- 		key = "t",
 -- 		mods = "LEADER",
 -- 		action = workspace_switcher.switch_workspace(),
 -- 	},
 -- 	{
---     key = "T",
---     mods = "ALT",
---     action = resurrect.tab_state.save_tab_action(),
---   },
+-- 		key = "T",
+-- 		mods = "ALT",
+-- 		action = resurrect.tab_state.save_tab_action(),
+-- 	},
 -- 	{
 -- 		key = "s", --both workspaces and window
 -- 		mods = "LEADER|CTRL",
@@ -236,20 +236,19 @@
 -- 		action = act.SwitchToWorkspace({ name = "dotfiles" }),
 -- 	},
 -- 	{
---     key = "d",
---     mods = "LEADER|CTRL",
---     action = wezterm.action_callback(function(win, pane)
---       resurrect.fuzzy_load(win, pane, function(id)
---           resurrect.delete_state(id)
---         end,
---         {
---           title = "Delete State",
---           description = "Select State to Delete and press Enter = accept, Esc = cancel, / = filter",
---           fuzzy_description = "Search State to Delete: ",
---           is_fuzzy = true,
---         })
---     end),
---   },
+-- 		key = "d",
+-- 		mods = "LEADER|CTRL",
+-- 		action = wezterm.action_callback(function(win, pane)
+-- 			resurrect.fuzzy_load(win, pane, function(id)
+-- 				resurrect.delete_state(id)
+-- 			end, {
+-- 				title = "Delete State",
+-- 				description = "Select State to Delete and press Enter = accept, Esc = cancel, / = filter",
+-- 				fuzzy_description = "Search State to Delete: ",
+-- 				is_fuzzy = true,
+-- 			})
+-- 		end),
+-- 	},
 -- 	{
 -- 		key = "r",
 -- 		mods = "LEADER|CTRL",
@@ -277,7 +276,7 @@
 -- 		end),
 -- 	},
 -- }
-
+--
 -- local function tab_switch_keys(key_table, modifier)
 -- 	for i = 1, 9 do
 -- 		table.insert(key_table, {
@@ -292,7 +291,7 @@
 -- 		action = act.ActivateTab(9),
 -- 	})
 -- end
-
+--
 -- tab_switch_keys(keys, "CTRL")
-
+--
 -- return keys

@@ -125,9 +125,9 @@ export NVM_DIR="$HOME/.nvm"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(~/.local/bin/zoxide init zsh)" 
+eval "$(~/.local/bin/zoxide init --cmd cd zsh)" 
 
-
+# bindkey ^t sesh connect $(sesh list|fzf)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000          # Number of commands to keep in memory
