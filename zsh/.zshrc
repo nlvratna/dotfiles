@@ -126,8 +126,9 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(~/.local/bin/zoxide init --cmd cd zsh)" 
+#
+# bindkey '^l' sesh connect $(sesh list|fzf)
 
-# bindkey ^t sesh connect $(sesh list|fzf)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000          # Number of commands to keep in memory
@@ -143,7 +144,7 @@ function sesh-sessions() {
     exec </dev/tty
     exec <&1
     local session
-    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    session=$(sesh list | fzf --height 40% --reverse --border-label  --border --prompt '⚡  ')
     zle reset-prompt > /dev/null 2>&1 || true
     [[ -z "$session" ]] && return
     sesh connect $session
