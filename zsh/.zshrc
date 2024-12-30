@@ -41,13 +41,13 @@ eval "$(~/.local/bin/zoxide init --cmd cd zsh)"
 # bindkey '^l' sesh connect $(sesh list|fzf)
 
 
-# HISTFILE=~/.zsh_history
-# HISTSIZE=10000          # Number of commands to keep in memory
-# SAVEHIST=10000          # Number of commands to save in the history file
-# setopt hist_ignore_dups # Ignore duplicate entries
-# setopt hist_ignore_all_dups # Ignore duplicates across sessions
-# setopt hist_reduce_blanks # Remove extra blanks from history entries
-# setopt hist_verify       # Show command before running on reuse
+HISTFILE=~/.zsh_history
+HISTSIZE=10000          # Number of commands to keep in memory
+SAVEHIST=10000          # Number of commands to save in the history file
+setopt hist_ignore_dups # Ignore duplicate entries
+setopt hist_ignore_all_dups # Ignore duplicates across sessions
+setopt hist_reduce_blanks # Remove extra blanks from history entries
+setopt hist_verify       # Show command before running on reuse
 
 
 function sesh-sessions() {
