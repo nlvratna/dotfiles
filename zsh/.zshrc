@@ -8,7 +8,7 @@ export GOBIN=$HOME/go/bin
 export PATH=$PATH:$GOBIN
 export PATH="$HOME/bin:$PATH"
 
-export PATH=$(echo $PATH | sed -e 's|/mnt/c/Windows/System32:||g' -e 's|/mnt/c/Program Files/...:||g')
+export PATH=$(echo $PATH | sed -e 's|/mnt/c/Windows/System32:||g')
 # Path to your Oh My Zsh installation.
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -63,6 +63,13 @@ function sesh-sessions() {
 }
 
 zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-bindkey -M vicmd '\es' sesh-sessions
-bindkey -M viins '\es' sesh-sessions
+# bindkey -M emacs '\es' sesh-sessions
+# bindkey -M vicmd '\es' sesh-sessions
+# bindkey -M viins '\es' sesh-sessions
+
+
+
+
+# Unbind Ctrl + p and Ctrl + n
+bindkey -r '^P'
+bindkey -r '^N'
