@@ -1,0 +1,59 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["memory", "battery", "network", "tray"],
+  
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "all-outputs": true,
+    "active-only": false,
+    "show-special": false
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 50,
+    "separate-outputs": true
+  },
+
+  "clock": {
+    "format": "{:%H:%M %b %d}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 {used:0.1f}GB",
+    "tooltip": true,
+    "tooltip-format": "Memory: {used:0.1f}GB/{total:0.1f}GB"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󱘖 {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip": true
+  },
+
+  "network": {
+    "format": "{icon}",
+    "format-wifi": "󰤨 {essid}",
+    "format-ethernet": "󰤭 Wired",
+    "format-disconnected": "󰤭",
+    "tooltip": true,
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)"
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  }
+}

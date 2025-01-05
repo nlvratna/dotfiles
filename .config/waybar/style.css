@@ -1,0 +1,99 @@
+* {
+  font-family: "FiraCode Nerd Font", "Symbols Nerd Font", monospace;
+  font-size: 14px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+window#waybar {
+  background: #191724;
+  color: #e0def4;
+  margin: 0;
+  padding: 0;
+}
+
+#workspaces {
+  background: #1f1d2e;
+  border-radius: 6px;
+  margin: 2px 5px;
+  padding: 0 5px;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  color: #908caa;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+#workspaces button.active {
+  color: #e0def4;
+  background: #26233a;
+}
+
+#workspaces button:hover {
+  background: #403d52;
+  color: #f6c177;
+}
+
+#window {
+  color: #e0def4;
+  background: #1f1d2e;
+  border-radius: 6px;
+  margin: 2px 5px;
+  padding: 0 10px;
+}
+
+#clock,
+#battery,
+#memory,
+#network,
+#tray {
+  background: #1f1d2e;
+  padding: 0 10px;
+  margin: 2px 5px;
+  border-radius: 6px;
+  color: #e0def4;
+}
+
+#clock {
+  color: #c4a7e7;
+}
+
+#memory {
+  color: #9ccfd8;
+}
+
+#battery {
+  color: #f6c177;
+}
+
+#battery.charging {
+  color: #9ccfd8;
+}
+
+#battery.warning:not(.charging) {
+  color: #eb6f92;
+}
+
+#network {
+  color: #ebbcba;
+}
+
+#clock:hover,
+#battery:hover,
+#memory:hover,
+#network:hover {
+  background: #26233a;
+}
+
+tooltip {
+  background: #191724;
+  border: 1px solid #26233a;
+  border-radius: 6px;
+}
+
+tooltip label {
+  color: #e0def4;
+}
