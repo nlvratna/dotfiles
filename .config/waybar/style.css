@@ -49,6 +49,7 @@ window#waybar {
 #battery,
 #memory,
 #network,
+#wireplumber,
 #tray {
   background: #1f1d2e;
   padding: 0 10px;
@@ -77,14 +78,32 @@ window#waybar {
   color: #eb6f92;
 }
 
+#wireplumber {
+  color: #9ccfd8;
+}
+
+#wireplumber.muted {
+  color: #6e6a86;
+}
+
 #network {
   color: #ebbcba;
 }
 
+#network.disconnected {
+  color: #eb6f92;
+}
+
+#network.linked {
+  color: #9ccfd8;
+}
+
+/* Hover effects */
 #clock:hover,
 #battery:hover,
 #memory:hover,
-#network:hover {
+#network:hover,
+#wireplumber:hover {
   background: #26233a;
 }
 
