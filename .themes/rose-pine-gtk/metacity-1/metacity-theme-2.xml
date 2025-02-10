@@ -9,10 +9,10 @@
 </info>
 
 <!-- ::: CONSTANTS ::: -->
-<constant name="C_titlebar_focused" value="#191724" />
+<constant name="C_titlebar_focused" value="#000000" />
 <constant name="C_titlebar_unfocused" value="#1f1d2e" />
 <constant name="C_border_focused" value="#c4a7e7" />
-<constant name="C_border_unfocused" value="#191724" />
+<constant name="C_border_unfocused" value="#000000" />
 <constant name="C_title_focused" value="#e0def4" />
 <constant name="C_title_unfocused" value="blend/#f0f0f3/#1f1d2e/0.4" />
 <constant name="C_icons_focused" value="#e0def4" />

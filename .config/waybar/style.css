@@ -7,14 +7,14 @@
 }
 
 window#waybar {
-  background: #191724;
+  background: #000000;
   color: #e0def4;
   margin: 0;
   padding: 0;
 }
 
 #workspaces {
-  background: #1f1d2e;
+  background: #000000;
   border-radius: 6px;
   margin: 2px 5px;
   padding: 0 5px;
@@ -29,7 +29,7 @@ window#waybar {
 
 #workspaces button.active {
   color: #e0def4;
-  background: #26233a;
+  background: #000000;
 }
 
 #workspaces button:hover {
@@ -39,7 +39,7 @@ window#waybar {
 
 #window {
   color: #e0def4;
-  background: #1f1d2e;
+  background: #000000;
   border-radius: 6px;
   margin: 2px 5px;
   padding: 0 10px;
@@ -51,7 +51,7 @@ window#waybar {
 #network,
 #wireplumber,
 #tray {
-  background: #1f1d2e;
+  background: #000000;
   padding: 0 10px;
   margin: 2px 5px;
   border-radius: 6px;
@@ -108,7 +108,7 @@ window#waybar {
 }
 
 tooltip {
-  background: #191724;
+  background: #000000;
   border: 1px solid #26233a;
   border-radius: 6px;
 }
