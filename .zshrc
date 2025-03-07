@@ -49,22 +49,9 @@ setopt hist_reduce_blanks # Remove extra blanks from history entries
 setopt hist_verify       # Show command before running on reuse
 
 
-function sesh-sessions() {
-  {
-    exec </dev/tty
-    exec <&1
-    local session
-    session=$(sesh list | fzf --height 40% --reverse --border-label  --border --prompt '⚡  ')
-    zle reset-prompt > /dev/null 2>&1 || true
-    [[ -z "$session" ]] && return
-    sesh connect $session
-  }
-}
-
-zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-# bindkey -M vicmd '\es' sesh-sessions
-# bindkey -M viins '\es' sesh-sessions
+if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+    exec Hyprland
+fi
 
 
 
@@ -72,3 +59,4 @@ bindkey -M emacs '\es' sesh-sessions
 # Unbind Ctrl + p and Ctrl + n
 bindkey -r '^P'
 bindkey -r '^N'
+bindkey -r '^S'
