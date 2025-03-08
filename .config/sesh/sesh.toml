@@ -1,4 +1,4 @@
 [[session]]
 name= "dotfiles"
 path = "~/dotfiles"
-startup_command = "nvim nvim"
+startup_command = "nvim "
