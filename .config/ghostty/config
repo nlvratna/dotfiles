@@ -9,7 +9,7 @@ shell-integration-features = no-cursor
 cursor-style-blink = false
 
 window-theme = ghostty
-
+#background-opacity = 0
 gtk-single-instance = true
 gtk-tabs-location = bottom
 gtk-wide-tabs = false
