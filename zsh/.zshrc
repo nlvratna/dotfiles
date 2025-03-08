@@ -1,5 +1,4 @@
 
-# If you come from bash you might have to change your $PATH.
  export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH=$PATH:/usr/local/go/bin
@@ -14,16 +13,9 @@ export PATH=$(echo $PATH | sed -e 's|/mnt/c/Windows/System32:||g')
 export ZSH="$HOME/.oh-my-zsh"
 export TERM=xterm-256color
 export COLORTERM=truecolor 
-# cd ~ #for  wezterm
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
 
 # I might need to remove auto-suggestions
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
@@ -34,10 +26,6 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(zoxide init --cmd cd zsh)"
-# bindkey '^l' sesh connect $(sesh list|fzf)
 
 
 HISTFILE=~/.zsh_history
@@ -54,9 +42,5 @@ if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
 fi
 
 
+# need to write a install script to setup basic stuff
 
-
-# Unbind Ctrl + p and Ctrl + n
-bindkey -r '^P'
-bindkey -r '^N'
-bindkey -r '^S'
