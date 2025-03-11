@@ -35,6 +35,7 @@ if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
     exec Hyprland
 fi
 
+#I might change it to dotfiles/scipts/tmux-sessionizer
 alias tn="$HOME/.local/bin/tmux-sessionizer"
 
 # need to write a install script to setup basic stuff
