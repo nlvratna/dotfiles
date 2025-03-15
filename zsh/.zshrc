@@ -34,9 +34,14 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
     exec Hyprland
 fi
+# Set up fzf key bindings and fuzzy completion
+# I don't know do I need it
+# source <(fzf --zsh)
+
 
 #I might change it to dotfiles/scipts/tmux-sessionizer
-alias tn="$HOME/.local/bin/tmux-sessionizer"
+alias tn="$HOME/scripts/tmux-sessionizer.sh"
+alias ds="$HOME/scripts/docker.sh"
 
 # need to write a install script to setup basic stuff
 
