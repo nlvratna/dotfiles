@@ -15,7 +15,8 @@ export TERM=xterm-256color
 export COLORTERM=truecolor 
 ZSH_THEME="robbyrussell"
 
-
+#who deleted this
+eval "$(zoxide init --cmd cd zsh)"
 
 # I might need to remove auto-suggestions
 #zsh-autosuggestions
