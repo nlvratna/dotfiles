@@ -32,9 +32,10 @@ export NVM_DIR="$HOME/.nvm"
 
 
 
-if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
-    exec Hyprland
-fi
+# if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+#     exec Hyprland
+# fi
+
 # Set up fzf key bindings and fuzzy completion
 # I don't know do I need it
 # source <(fzf --zsh)
