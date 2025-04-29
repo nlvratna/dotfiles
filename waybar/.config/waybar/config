@@ -2,7 +2,7 @@
   // Variables for common configurations
   "layer": "top",
   "position": "top",
-  "height": 22,
+//  "height": 30,
   "spacing": 4,
 
   // Modules Configuration
@@ -75,6 +75,18 @@
   },
 
   // Audio Management
+"wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-",
+    "max-volume": 100,
+    "scroll-step": 5.0,
+    "refresh-on-change": true
+},
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟",

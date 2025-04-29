@@ -33,8 +33,9 @@ export NVM_DIR="$HOME/.nvm"
 
 
 if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
-    # exec Hyprland
-    exec sway
+    exec Hyprland
+    # will try out hyrpland for some time
+    # exec sway
 fi
 
 # Set up fzf key bindings and fuzzy completion
