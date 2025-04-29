@@ -13,12 +13,11 @@ set $left h
 set $down j
 set $up k
 set $right l
-
-
+seat seat0 xcursor_theme BreezeX-RosePine-Linux 18
 
 set $term ghostty
 set $menu wofi --show drun
-set $browser zen-browser
+set $browser brave
 set $fileManager nautilus
 
 exec_always $term
