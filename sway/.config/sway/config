@@ -17,12 +17,12 @@ seat seat0 xcursor_theme BreezeX-RosePine-Linux 18
 
 set $term ghostty
 set $menu wofi --show drun
-set $browser brave
+set $browser zen-browser
 set $fileManager nautilus
 
 exec_always $term
 exec_always ~/scripts/touchpad_toogle.sh
-exec env XDG_CURRENT_DESKTOP=sway dbus-run-session river
+exec env XDG_CURRENT_DESKTOP=SWAY 
 # exec env GTK_USE_PORTAL=1 sway
 ### Output configuration
 #
@@ -34,8 +34,11 @@ exec env XDG_CURRENT_DESKTOP=sway dbus-run-session river
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-
-default_border pixel 2
+# gaps inner 6
+# gaps top 2    
+# gaps outer 6
+# default_border pixel 2
+default_border none
 ### Input configuration
 #
 # Example configuration:
