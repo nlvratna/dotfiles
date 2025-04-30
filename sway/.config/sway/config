@@ -19,6 +19,7 @@ set $term ghostty
 set $menu wofi --show drun
 set $browser zen-browser
 set $fileManager nautilus
+# set $apiclient ~/appimages/Insomnia.Core-11.0.2.AppImage
 
 exec_always $term
 exec_always ~/scripts/touchpad_toogle.sh
@@ -37,8 +38,8 @@ exec env XDG_CURRENT_DESKTOP=SWAY
 # gaps inner 6
 # gaps top 2    
 # gaps outer 6
-# default_border pixel 2
-default_border none
+default_border pixel 2
+# default_border none
 ### Input configuration
 #
 # Example configuration:
@@ -83,6 +84,7 @@ input "7847:102:2.4G_Mouse_System_Control" {
 #
     bindsym $mod+Return exec $term
     bindsym $mod+b exec $browser
+    # bindsym $mod+o exec $apiclient
     bindsym $mod+z exec $fileManager
     bindsym $mod+c kill
 
