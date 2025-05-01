@@ -45,6 +45,12 @@ default_border pixel 2
 # Example configuration:
 #
 # Enable tapping (single tap = left click, two fingers = right click, three fingers = middle click)
+
+input "type:keyboard" {
+    xkb_layout "us"
+    xkb_options "ctrl:nocaps"
+}
+
 input "type:touchpad" {
     tap enabled
     tap_button_map lrm # Left, Right, Middle
