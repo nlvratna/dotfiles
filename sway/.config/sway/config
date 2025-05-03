@@ -219,6 +219,10 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym  Print  exec grim -g  "$(slurp)" - | wl-copy 
     bindsym  ctrl+Print  exec grim - | wl-copy 
+   #important for earbuds
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
 #bindsym $mod+Shift+space input type:touchpad events toggle enabled disabled
 # Status Bar:
 #
