@@ -1,297 +1,42 @@
--- local wezterm = require("wezterm")
--- local act = wezterm.action
--- local mux = wezterm.mux
--- local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
--- local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
---
--- local keys = {
---
--- 	-- -- Disable Alt-Enter combination (already used in tmux to split pane)
--- 	-- {
--- 	--     key = 'Enter',
--- 	--     mods = 'ALT',
--- 	--     action = act.DisableDefaultAssignment,
--- 	-- },
---
--- 	-- Copy mode
--- 	{
--- 		key = "[",
--- 		mods = "LEADER",
--- 		action = act.ActivateCopyMode,
--- 	},
--- 	-- Show tab navigator; similar to listing panes in tmux
--- 	{
--- 		key = "w",
--- 		mods = "LEADER",
--- 		action = act.ShowTabNavigator,
--- 	},
--- 	-- Create a tab (alternative to Ctrl-Shift-Tab)
--- 	{
--- 		key = "c",
--- 		mods = "LEADER",
--- 		action = act.SpawnTab("CurrentPaneDomain"),
--- 	},
--- 	{
--- 		key = ",",
--- 		mods = "LEADER",
--- 		action = act.PromptInputLine({
--- 			description = "Enter new name for tab",
--- 			action = wezterm.action_callback(function(window, pane, line)
--- 				if line then
--- 					window:active_tab():set_title(line)
--- 				end
--- 			end),
--- 		}),
--- 	},
--- 	-- Move to next/previous TAB
--- 	{
--- 		key = "n",
--- 		mods = "LEADER",
--- 		action = act.ActivateTabRelative(1),
--- 	},
--- 	{
--- 		key = "p",
--- 		mods = "LEADER",
--- 		action = act.ActivateTabRelative(-1),
--- 	},
--- 	-- Close tab
--- 	{
--- 		key = "x",
--- 		mods = "LEADER",
--- 		action = act.CloseCurrentTab({ confirm = true }),
--- 	},
---
--- 	{
--- 		-- |
--- 		key = "v",
--- 		mods = "LEADER",
--- 		action = act.SplitPane({
--- 			direction = "Right",
--- 			size = { Percent = 50 },
--- 		}),
--- 	},
--- 	-- Horizontal split
--- 	{
--- 		-- -
--- 		key = "h",
--- 		mods = "LEADER",
--- 		action = act.SplitPane({
--- 			direction = "Down",
--- 			size = { Percent = 50 },
--- 		}),
--- 	},
---
--- 	-- CTRL + (h,j,k,l) to move between panes
--- 	-- {
--- 	-- 	key = "h",
--- 	-- 	mods = "CTRL",
--- 	-- 	action = act({ EmitEvent = "move-left" }),
--- 	-- },
--- 	-- {
--- 	-- 	key = "j",
--- 	-- 	mods = "CTRL",
--- 	-- 	action = act({ EmitEvent = "move-down" }),
--- 	-- },
--- 	-- {
--- 	-- 	key = "k",
--- 	-- 	mods = "CTRL",
--- 	-- 	action = act({ EmitEvent = "move-up" }),
--- 	-- },
--- 	-- {
--- 	-- 	key = "l",
--- 	-- 	mods = "CTRL",
--- 	-- 	action = act({ EmitEvent = "move-right" }),
--- 	-- },
---
--- 	-- -- ALT + (h,j,k,l) to resize panes
--- 	-- {
--- 	-- 	key = "h",
--- 	-- 	mods = "ALT",
--- 	-- 	action = act({ EmitEvent = "resize-left" }),
--- 	-- },
--- 	-- {
--- 	-- 	key = "j",
--- 	-- 	mods = "ALT",
--- 	-- 	action = act({ EmitEvent = "resize-down" }),
--- 	-- },
--- 	-- {
--- 	-- 	key = "k",
--- 	-- 	mods = "ALT",
--- 	-- 	action = act({ EmitEvent = "resize-up" }),
--- 	-- },
--- 	-- {
--- 	-- 	key = "l",
--- 	-- 	mods = "ALT",
--- 	-- 	action = act({ EmitEvent = "resize-right" }),
--- 	-- },
--- 	-- Close/kill active pane
--- 	{
--- 		key = "x",
--- 		mods = "LEADER",
--- 		action = act.CloseCurrentPane({ confirm = true }),
--- 	},
--- 	-- Swap active pane with another one
--- 	{
--- 		key = "{",
--- 		mods = "LEADER|SHIFT",
--- 		action = act.PaneSelect({ mode = "SwapWithActiveKeepFocus" }),
--- 	},
--- 	-- Zoom current pane (toggle)
--- 	{
--- 		key = "z",
--- 		mods = "LEADER",
--- 		action = act.TogglePaneZoomState,
--- 	},
--- 	{
--- 		key = "f",
--- 		mods = "ALT",
--- 		action = act.TogglePaneZoomState,
--- 	},
--- 	-- Move to next/previous pane
--- 	{
--- 		key = ";",
--- 		mods = "LEADER",
--- 		action = act.ActivatePaneDirection("Prev"),
--- 	},
--- 	{
--- 		key = "o",
--- 		mods = "LEADER",
--- 		action = act.ActivatePaneDirection("Next"),
--- 	},
--- 	-- Attach to muxer
--- 	{
--- 		key = "a",
--- 		mods = "LEADER",
--- 		action = act.AttachDomain("unix"),
--- 	},
---
--- 	-- Detach from muxer
--- 	{
--- 		key = "d",
--- 		mods = "LEADER",
--- 		action = act.DetachDomain({ DomainName = "unix" }),
--- 	},
--- 	-- Show list of workspaces
--- 	{
--- 		key = "s",
--- 		mods = "LEADER",
--- 		action = act.ShowLauncherArgs({ flags = "WORKSPACES" }),
--- 	},
--- 	{
--- 		key = "r",
--- 		mods = "LEADER",
--- 		action = act.PromptInputLine({
--- 			description = "Enter new name for session",
--- 			action = wezterm.action_callback(function(window, pane, line)
--- 				if line then
--- 					mux.rename_workspace(window:mux_window():get_workspace(), line)
--- 				end
--- 			end),
--- 		}),
--- 	},
---
--- 	{
--- 		key = "q", -- save workspaces
--- 		mods = "LEADER|CTRL",
--- 		action = wezterm.action_callback(function(win, pane)
--- 			resurrect.save_state(resurrect.workspace_state.get_workspace_state())
--- 		end),
--- 	},
--- 	{
--- 		key = "W", --window save state
--- 		mods = "LEADER|SHIFT",
--- 		action = resurrect.window_state.save_window_action(),
--- 	},
--- 	{
--- 		key = "t",
--- 		mods = "LEADER",
--- 		action = workspace_switcher.switch_workspace(),
--- 	},
--- 	{
--- 		key = "T",
--- 		mods = "ALT",
--- 		action = resurrect.tab_state.save_tab_action(),
--- 	},
--- 	{
--- 		key = "s", --both workspaces and window
--- 		mods = "LEADER|CTRL",
--- 		action = wezterm.action_callback(function(win, pane)
--- 			resurrect.save_state(resurrect.workspace_state.get_workspace_state())
--- 			resurrect.window_state.save_window_action()
--- 		end),
--- 	},
--- 	{
--- 		key = "[",
--- 		mods = "LEADER",
--- 		action = act.SwitchWorkspaceRelative(1),
--- 	},
--- 	{
--- 		key = "]",
--- 		mods = "LEADER",
--- 		action = act.SwitchWorkspaceRelative(-1),
--- 	},
--- 	{
--- 		key = "d",
--- 		mods = "CTRL",
--- 		action = act.SwitchToWorkspace({ name = "dotfiles" }),
--- 	},
--- 	{
--- 		key = "d",
--- 		mods = "LEADER|CTRL",
--- 		action = wezterm.action_callback(function(win, pane)
--- 			resurrect.fuzzy_load(win, pane, function(id)
--- 				resurrect.delete_state(id)
--- 			end, {
--- 				title = "Delete State",
--- 				description = "Select State to Delete and press Enter = accept, Esc = cancel, / = filter",
--- 				fuzzy_description = "Search State to Delete: ",
--- 				is_fuzzy = true,
--- 			})
--- 		end),
--- 	},
--- 	{
--- 		key = "r",
--- 		mods = "LEADER|CTRL",
--- 		action = wezterm.action_callback(function(win, pane)
--- 			resurrect.fuzzy_load(win, pane, function(id, label)
--- 				local type = string.match(id, "^([^/]+)") -- match before '/'
--- 				id = string.match(id, "([^/]+)$") -- match after '/'
--- 				id = string.match(id, "(.+)%..+$") -- remove file extention
--- 				local opts = {
--- 					relative = true,
--- 					restore_text = true,
--- 					on_pane_restore = resurrect.tab_state.default_on_pane_restore,
--- 				}
--- 				if type == "workspace" then
--- 					local state = resurrect.load_state(id, "workspace")
--- 					resurrect.workspace_state.restore_workspace(state, opts)
--- 				elseif type == "window" then
--- 					local state = resurrect.load_state(id, "window")
--- 					resurrect.window_state.restore_window(pane:window(), state, opts)
--- 				elseif type == "tab" then
--- 					local state = resurrect.load_state(id, "tab")
--- 					resurrect.tab_state.restore_tab(pane:tab(), state, opts)
--- 				end
--- 			end)
--- 		end),
--- 	},
--- }
---
--- local function tab_switch_keys(key_table, modifier)
--- 	for i = 1, 9 do
--- 		table.insert(key_table, {
--- 			key = tostring(i),
--- 			mods = modifier,
--- 			action = act.ActivateTab(i - 1),
--- 		})
--- 	end
--- 	table.insert(key_table, {
--- 		key = "0",
--- 		mods = modifier,
--- 		action = act.ActivateTab(9),
--- 	})
--- end
---
--- tab_switch_keys(keys, "CTRL")
---
--- return keys
+local wezterm = require("wezterm")
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
+local act = wezterm.action
+local mux = wezterm.mux
+
+local leader = { key = "a", mods = "CTRL" }
+
+local keys = {
+	{
+		key = "n",
+		mods = "LEADER",
+		action = act.SpawnTab("CurrentPaneDomain"),
+	},
+	{
+		key = "i",
+		mods = "CTRL",
+		action = act.ActivateCopyMode,
+	},
+	{
+		key = "x",
+		mods = "LEADER",
+		action = act.CloseCurrentTab({ confirm = true }),
+	},
+	{
+		key = "f",
+		mods = "CTRL",
+		action = act.ActivateTabRelative(1),
+	},
+
+	{
+		key = "s",
+		mods = "CTRL",
+		action = act.ActivateTabRelative(-1),
+	},
+	{
+		key = ";",
+		mods = "CTRL",
+		action = workspace_switcher.switch_workspace(),
+	},
+}
+
+return keys
