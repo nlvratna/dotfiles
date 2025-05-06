@@ -1,41 +1,10 @@
 {
-  // Variables for common configurations
   "layer": "top",
   "position": "top",
-//  "height": 30,
-  "spacing": 4,
 
-  // Modules Configuration
   "modules-left": ["clock"],
   "modules-right": ["wireplumber", "memory", "battery", "network", "tray"],
 
-  // Workspaces for both Sway and Hyprland
-  "sway/workspaces": {
-    "format": "{name}",
-    "on-click": "swaymsg workspace {name}",
-    "all-outputs": true,
-    "active-only": false
-  },
-
-  "hyprland/workspaces": {
-    "format": "{name}",
-    "on-click": "activate",
-    "all-outputs": true,
-    "active-only": false,
-    "show-special": false
-  },
-
-  // Window Title Management
-  "sway/window": {
-    "format": "{}",
-    "max-length": 50
-  },
-
-  "hyprland/window": {
-    "format": "{}",
-    "max-length": 50,
-    "separate-outputs": true
-  },
 
   // Clock
   "clock": {
@@ -104,4 +73,3 @@
     "spacing": 10
   }
 }
-
