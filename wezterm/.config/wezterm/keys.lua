@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
 
@@ -31,11 +30,6 @@ local keys = {
 		key = "s",
 		mods = "CTRL",
 		action = act.ActivateTabRelative(-1),
-	},
-	{
-		key = ";",
-		mods = "CTRL",
-		action = workspace_switcher.switch_workspace(),
 	},
 }
 

@@ -1,8 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
-
 local keys = require("keys")
 local theme = require("rosepine")
 
