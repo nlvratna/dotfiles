@@ -1,0 +1,19 @@
+(defcfg 
+process-unmapped-keys true
+)
+
+(defsrc
+    w
+)
+
+(defalias 
+ w-mod (tap-hold 200 200  w esc)
+)
+
+
+(deflayer base
+@w-mod
+)
+
+
+
