@@ -1,5 +1,4 @@
-
- export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH=$PATH:/usr/local/go/bin
 #export PATH= "$HOME/.local/bin:$PATH"
@@ -18,7 +17,6 @@ ZSH_THEME="robbyrussell"
 #who deleted this
 eval "$(zoxide init --cmd cd zsh)"
 
-# I might need to remove auto-suggestions
 #zsh-autosuggestions
 plugins=(git  zsh-syntax-highlighting)
 
@@ -31,21 +29,12 @@ export NVM_DIR="$HOME/.nvm"
 
 
 
-
-if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
-    #exec Hyprland
-    # will try out hyrpland for some time
-    # exec sway
-fi
-
 # Set up fzf key bindings and fuzzy completion
 # I don't know do I need it
 source <(fzf --zsh)
 
 
-#I might change it to dotfiles/scipts/tmux-sessionizer
 alias tn="$HOME/scripts/tmux-sessionizer.sh"
 alias ds="$HOME/scripts/docker.sh"
 
-# need to write a install script to setup basic stuff
 

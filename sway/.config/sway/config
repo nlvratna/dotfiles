@@ -20,7 +20,6 @@ set $menu rofi -show drun
 # set $browser zen-browser
 set $browser brave
 set $fileManager nautilus
-# set $apiclient ~/appimages/Insomnia.Core-11.0.2.AppImage
 
 exec_always $term
 exec_always ~/scripts/touchpad_toogle.sh
