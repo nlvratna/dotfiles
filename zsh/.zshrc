@@ -36,5 +36,6 @@ source <(fzf --zsh)
 
 alias tn="$HOME/scripts/tmux-sessionizer.sh"
 alias ds="$HOME/scripts/docker.sh"
+alias vim="nvim"
 
 

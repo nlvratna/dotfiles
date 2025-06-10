@@ -19,7 +19,7 @@ set $term ghostty
 set $menu rofi -show drun
 # set $browser zen-browser
 set $browser brave
-set $fileManager nautilus
+set $fileManager thunar
 
 exec_always $term
 exec_always ~/scripts/touchpad_toogle.sh
