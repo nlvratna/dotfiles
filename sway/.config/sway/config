@@ -102,7 +102,7 @@ input "7847:102:2.4G_Mouse_System_Control" {
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
-    bindsym $mod+p exec systemctl poweroff
+    bindsym $mod+q exec systemctl poweroff
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
