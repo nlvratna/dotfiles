@@ -155,10 +155,10 @@ input "7847:102:2.4G_Mouse_System_Control" {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+x splith
-    bindsym $mod+v splitv
+    # bindsym $mod+x splith
+    # bindsym $mod+v splitv
 
-bindsym $mod+Shift+Escape exec pgrep waybar && killall waybar || waybar &
+bindsym $mod+v exec pgrep waybar && killall waybar || waybar &
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
