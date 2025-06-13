@@ -26,7 +26,20 @@ hydrate() {
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/projects ~/learning -mindepth 1 -maxdepth 1 -type d | fzf )
+
+if command -v fd >/dev/null 2>&1; then
+
+  selected=$(fd --type d . --full-path "$HOME" --max-depth 5 \
+    --exclude node_modules --exclude .git --exclude venv \
+    --exclude __pycache__ --exclude .cache --exclude target \
+    --exclude build --exclude vendor --exclude pkg --exclude mod | fzf)
+else
+  selected=$(find "$HOME" -max-depth 5  -type d \
+    \( -path '*/node_modules' -o -path '*/.git' -o -path '*/venv' \
+       -o -path '*/__pycache__' -o -path '*/.cache' -o -path '*/target' \
+       -o -path '*/build' -o -path '*/vendor' -o -path '*/pkg' -o -path '*/mod' \) \
+    -prune -false -o -print | fzf)
+fi
 fi
 
 if [[ -z $selected ]]; then
