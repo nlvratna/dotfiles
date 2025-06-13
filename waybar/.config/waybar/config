@@ -1,40 +1,48 @@
 {
   "layer": "top",
   "position": "top",
-
-  "modules-left": ["clock"],
-  "modules-right": ["wireplumber", "memory", "battery", "network", "tray"],
-
-
-  // Clock
+  "height": 32,
+  "spacing": 8,
+  "modules-left": [
+      "clock"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "custom/media-controls",
+    "memory",
+    "network", 
+    "battery",
+    "tray",
+  ],
+   "custom/media-controls": {
+    "exec": "~/.config/waybar/media-controls.sh",
+    "interval": 1,
+    "return-type": "json",
+    "on-click": "playerctl play-pause -p brave",
+    "on-click-right": "playerctl next -p brave",
+    "on-click-middle": "playerctl previous -p brave",
+    "tooltip": true,
+    "max-length": 50
+   },
   "clock": {
-    "format": "{:%H:%M %b %d}",
-    "tooltip": true,
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "{:%H:%M }",
+    "tooltip-format": "{:%A, %B %d, %Y}"
   },
-
-  // Memory
-  "memory": {
-    "interval": 5,
-    "format": "󰍛 {used:0.1f}GB",
-    "tooltip": true,
-    "tooltip-format": "Memory: {used:0.1f}GB/{total:0.1f}GB"
-  },
-
-  // Battery
   "battery": {
     "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": "󱘖 {capacity}%",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
     "states": {
       "warning": 30,
       "critical": 15
     }
   },
-
-  // Network
-  "network": {
+  "memory": {
+    "format": " {percentage}%",
+    "tooltip-format": "Memory: {used:0.1f}G/{total:0.1f}G"
+  },
+ "network": {
     "format": "{icon}",
     "format-wifi": "󰤨 Connected",
     "format-ethernet": "󰤭",
@@ -42,34 +50,7 @@
     "tooltip-format": "{ifname}",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
   },
-
-  // Audio Management
-"wireplumber": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰝟",
-    "format-icons": ["󰕿", "󰖀", "󰕾"],
-    "on-click": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
-    "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-",
-    "max-volume": 100,
-    "scroll-step": 5.0,
-    "refresh-on-change": true
-},
-  "wireplumber": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰝟",
-    "format-icons": ["󰕿", "󰖀", "󰕾"],
-    "on-click": "pavucontrol",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-    "refresh-on-change": true
-  },
-
-  // System Tray
   "tray": {
-    "icon-size": 16,
-    "spacing": 10
+    "spacing": 8
   }
 }

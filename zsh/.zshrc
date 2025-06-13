@@ -5,6 +5,7 @@ export PATH=$PATH:/usr/local/go/bin
 export GOBIN=$HOME/go/bin
 export PATH=$PATH:$GOBIN
 export PATH="$HOME/bin:$PATH"
+export MANPAGER="nvim +Man!"
 
 
 # Path to your Oh My Zsh installation.
@@ -32,7 +33,6 @@ export NVM_DIR="$HOME/.nvm"
 # Set up fzf key bindings and fuzzy completion
 # I don't know do I need it
 source <(fzf --zsh)
-
 
 alias tn="$HOME/scripts/tmux-sessionizer.sh"
 alias ds="$HOME/scripts/docker.sh"

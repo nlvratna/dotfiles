@@ -21,9 +21,9 @@ set $menu rofi -show drun
 set $browser brave
 set $fileManager thunar
 
-exec_always $term
 exec_always ~/scripts/touchpad_toogle.sh
 exec env XDG_CURRENT_DESKTOP=SWAY 
+exec_always swaync
 # exec env GTK_USE_PORTAL=1 sway
 ### Output configuration
 #
@@ -230,5 +230,5 @@ bindsym $mod+r mode "resize"
 #     }
 # }
 
-# exec_always waybar
+ exec_always waybar
 include @sysconfdir@/sway/config.d/*

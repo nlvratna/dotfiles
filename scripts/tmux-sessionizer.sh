@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+
+#this script has been stolen from ThePrimeagen
+#https://github.com/ThePrimeagen/tmux-sessionizer/tree/master
 switch_to() {
     if [[ -z $TMUX ]]; then
         tmux attach-session -t $1
