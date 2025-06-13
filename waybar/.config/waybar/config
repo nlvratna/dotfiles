@@ -48,7 +48,8 @@
     "format-ethernet": "󰤭",
     "format-disconnected": "󰤭",
     "tooltip-format": "{ifname}",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "on-click" : "nm-applet"
   },
   "tray": {
     "spacing": 8
