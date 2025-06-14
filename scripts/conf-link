@@ -5,9 +5,8 @@
 for dir in "$HOME"/dotfiles/*; do
     basedir=$(basename "$dir")
     if [[ "$basedir" == scripts ]]; then
-        echo "copying scripts to home/scripts"
-        mkdir -p "$HOME"/"$basedir"
-        cp -r "$dir"/* "$HOME"/"$basedir"
+        mkdir -p "$HOME"/.local/bin
+        cp -r "$dir"/* "$HOME"/.local/bin
 
     elif [[ "$basedir" == zsh ]]; then
         echo "creating symlink for zsh"

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+sleep_time="${1:-899}"
+# output_format="png"
+
+# Fix bad image formats
+# for img in "$HOME"/Wallpapers/*; do
+#     [ -f "$img" ] || continue  # Skip non-files
+#     mime_type=$(file --mime-type -b "$img")
+#
+#     case "$mime_type" in
+#         image/jpeg|image/png)
+#             echo "Valid image: $img"
+#             ;;
+#         image/webp|image/x-ms-bmp|image/tiff|application/octet-stream)
+#             new_name="${img%.*}.${output_format}"
+#             if magick "$img" "$new_name"; then
+#                 rm "$img"
+#                 echo "Converted and removed: $img"
+#             else
+#                 echo "Failed to convert: $img"
+#             fi
+#             ;;
+#         *)
+#             echo "Unknown format, skipping: $img ($mime_type)"
+#             ;;
+#     esac
+# done
+
+
+# Start the wallpaper loop
+while true; do
+    killall swaybg 2>/dev/null
+    swaybg -i "$(find "$HOME"/Wallpapers/ -type f | shuf -n1)" -m fill &
+    sleep "$sleep_time"
+done
