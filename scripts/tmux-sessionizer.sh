@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-
 #this script has been stolen from ThePrimeagen
 #https://github.com/ThePrimeagen/tmux-sessionizer/tree/master
+
 switch_to() {
     if [[ -z $TMUX ]]; then
         tmux attach-session -t $1
@@ -15,13 +15,6 @@ has_session() {
     tmux list-sessions | grep -q "^$1:"
 }
 
-hydrate() {
-    if [ -f $2/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $2/.tmux-sessionizer" c-M
-    elif [ -f $HOME/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" c-M
-    fi
-}
 
 if [[ $# -eq 1 ]]; then
     selected=$1
@@ -51,7 +44,6 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
-    hydrate $selected_name $selected
     exit 0
 fi
 
