@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# I am not good at bash scripting
+
+for dir in "$HOME"/dotfiles/*; do
+    basedir=$(basename "$dir")
+    if [[ "$basedir" == scripts ]]; then
+        echo "copying scripts to home/scripts"
+        mkdir -p "$HOME"/"$basedir"
+        cp -r "$dir"/* "$HOME"/"$basedir"
+
+    elif [[ "$basedir" == zsh ]]; then
+        echo "creating symlink for zsh"
+       ln -sfn  "$dir"/.zshrc "$HOME"
+
+   elif [[ "$basedir" == keyd ]]; then
+       sudo ln -sfn "$dir"/* /etc/keyd
+
+   else
+       mkdir -p   "$HOME"/.config/"$basedir"
+       ln -sfn  "$dir"/* "$HOME"/.config
+    fi
+done

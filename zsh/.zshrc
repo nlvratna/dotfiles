@@ -5,6 +5,7 @@ export PATH=$PATH:/usr/local/go/bin
 export GOBIN=$HOME/go/bin
 export PATH=$PATH:$GOBIN
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/scripts:$PATH"
 export MANPAGER="nvim +Man!"
 
 
@@ -34,8 +35,10 @@ export NVM_DIR="$HOME/.nvm"
 # I don't know do I need it
 source <(fzf --zsh)
 
-alias tn="$HOME/scripts/tmux-sessionizer.sh"
-alias ds="$HOME/scripts/docker.sh"
-alias vim="nvim"
+alias tn="$HOME/scripts/tmux-sessionizer"
+alias ds="$HOME/scripts/docker"
+
+alias v="nvim"
+alias c="clear"
 
 

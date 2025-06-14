@@ -43,13 +43,15 @@ exec_always swaync
 # gaps top 4    
 # gaps outer 6
 
-#use this for now looks good
-gaps left 30
+gaps left 20
 gaps right -5       
 gaps horizontal 15
-gaps vertical 10
+# gaps vertical 10
+gaps top 3
+gaps bottom 10
 
-# default_border pixel 2
+gaps inner 6    
+
 default_border none
 
 set $opacity 0.80
@@ -118,7 +120,7 @@ input "7847:102:2.4G_Mouse_System_Control" {
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
     floating_modifier $mod normal
-    bindsym $mod+q exec systemctl poweroff
+    bindsym $mod+p exec systemctl poweroff
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
