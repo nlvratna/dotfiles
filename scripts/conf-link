@@ -6,11 +6,12 @@ for dir in "$HOME"/dotfiles/*; do
     basedir=$(basename "$dir")
     if [[ "$basedir" == scripts ]]; then
         mkdir -p "$HOME"/.local/bin
-        cp -r "$dir"/* "$HOME"/.local/bin
+        ln -sfn "$dir"/* "$HOME"/.local/bin
 
     elif [[ "$basedir" == zsh ]]; then
         echo "creating symlink for zsh"
        ln -sfn  "$dir"/.zshrc "$HOME"
+       ln -sfn  "$dir"/.zprofile "$HOME"
 
    elif [[ "$basedir" == keyd ]]; then
        sudo ln -sfn "$dir"/* /etc/keyd

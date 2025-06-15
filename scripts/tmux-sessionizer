@@ -27,11 +27,11 @@ if command -v fd >/dev/null 2>&1; then
     --exclude __pycache__ --exclude .cache --exclude target \
     --exclude build --exclude vendor --exclude pkg --exclude mod | fzf)
 else
-  selected=$(find "$HOME" -max-depth 5  -type d \
+  selected=$(find "$HOME" -maxdepth 5  -type d \
     \( -path '*/node_modules' -o -path '*/.git' -o -path '*/venv' \
        -o -path '*/__pycache__' -o -path '*/.cache' -o -path '*/target' \
        -o -path '*/build' -o -path '*/vendor' -o -path '*/pkg' -o -path '*/mod' \) \
-    -prune -false -o -print | fzf)
+    -prune  -o -type d -print | fzf)
 fi
 fi
 
