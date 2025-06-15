@@ -8,6 +8,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$PATH
 export GOBIN=$HOME/go/bin
 
-
-
+if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" && -x "$(command -v hyprland)" ]]; then
+    exec hyprland
+    #exec sway
+fi
 

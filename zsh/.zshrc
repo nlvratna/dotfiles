@@ -1,14 +1,15 @@
 export MANPAGER="nvim +Man!"
 
 export ZSH=$HOME/.zsh
-export TERM=xterm-256color
-export COLORTERM=truecolor 
+# export TERM=xterm-256color
+# export COLORTERM=truecolor 
 
+
+# export ZSH="$HOME/.oh-my-zsh"
+# source $ZSH/oh-my-zsh.sh
 
 # ZSH_THEME="robbyrussell"
-# export ZSH="$HOME/.oh-my-zsh"
 # plugins=(zsh-syntax-highlighting)
-# source $ZSH/oh-my-zsh.sh
 
 
 #History setup
@@ -24,19 +25,12 @@ autoload -Uz tetriscurses
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 
-
-
-if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" ]]; then
-    exec hyprland
-    # exec sway
-fi
-
 #fzf
 # source <(fzf --zsh)
 
 [ -f "$HOME"/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source "$HOME"/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
-
+# [ -f "$HOME"/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh ] && source "$HOME"/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh 
 
 export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
 
@@ -50,9 +44,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-
-
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
@@ -62,5 +53,3 @@ alias ds="$HOME/.local/bin/docker-start"
 alias tetris="tetriscurses"
 alias v="nvim"
 alias c="clear"
-
-
