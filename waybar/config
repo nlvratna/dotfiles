@@ -25,7 +25,7 @@
     "max-length": 50
    },
   "clock": {
-    "format": "{:%H:%M }",
+    "format": "{:%H:%M %d-%b-%y }",
     "tooltip-format": "{:%A, %B %d, %Y}"
   },
   "battery": {
