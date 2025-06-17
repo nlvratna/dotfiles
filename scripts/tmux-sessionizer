@@ -22,12 +22,12 @@ else
 
 if command -v fd >/dev/null 2>&1; then
 
-  selected=$(fd --type d . --full-path "$HOME" --max-depth 5 \
+  selected=$(fd --type d . --full-path "$HOME" --max-depth 3 \
     --exclude node_modules --exclude .git --exclude venv \
     --exclude __pycache__ --exclude .cache --exclude target \
-    --exclude build --exclude vendor --exclude pkg --exclude mod | fzf)
+    --exclude build --exclude vendor --exclude pkg --exclude mod |sed "s|$HOME/||"| fzf)
 else
-  selected=$(find "$HOME" -maxdepth 5  -type d \
+  selected=$(find "$HOME" -maxdepth 3  -type d \
     \( -path '*/node_modules' -o -path '*/.git' -o -path '*/venv' \
        -o -path '*/__pycache__' -o -path '*/.cache' -o -path '*/target' \
        -o -path '*/build' -o -path '*/vendor' -o -path '*/pkg' -o -path '*/mod' \) \
@@ -37,6 +37,8 @@ fi
 
 if [[ -z $selected ]]; then
     exit 0
+else
+    selected="$HOME/$selected"
 fi
 
 selected_name=$(basename "$selected" | tr . _)
@@ -49,7 +51,6 @@ fi
 
 if ! has_session $selected_name; then
     tmux new-session -ds $selected_name -c $selected
-    hydrate $selected_name $selected
 fi
 
 switch_to $selected_name

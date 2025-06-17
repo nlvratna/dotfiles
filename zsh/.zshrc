@@ -1,8 +1,8 @@
+
+
 # export TERM=xterm-256color
 # export COLORTERM=truecolor 
 
-autoload -Uz compinit && compinit 
-autoload -Uz tetriscurses
 # export ZSH="$HOME/.oh-my-zsh"
 # source $ZSH/oh-my-zsh.sh
 
@@ -10,36 +10,48 @@ autoload -Uz tetriscurses
 # plugins=(zsh-syntax-highlighting)
 
 
+zmodload zsh/complist
+autoload -U compinit && compinit
+autoload -U tetriscurses # this is the only one I need
+autoload -U colors && colors
+autoload -U vcs_info
+
+
+
+setopt no_case_glob no_case_match # make cmp case insensitive
+setopt append_history inc_append_history share_history # better history
+# on exit, history appends rather than overwrites; history is appended as soon as cmds executed; history shared across sessions
+setopt auto_menu menu_complete # autocmp first menu match
+setopt autocd # type a dir to cd
+
+
 #History setup
-export HISTSIZE=10000
-export SAVEHIST=10000
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_FIND_NO_DUPS
-
-
-#case insestive setup and tetris
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+HISTCONTROL=ignoreboth
 
 #❯
-bindkey -v
+# may be not now
+# bindkey -v
 #fzf
  source <(fzf --zsh)
  bindkey '^p' history-search-backward
  bindkey '^n' history-search-forward
+ bindkey "^H" backward-kill-word
+ bindkey "^j" backward-word
+ bindkey "^k" forward-word
 
-
-autoload -Uz vcs_info
 precmd() { vcs_info }
-
-setopt prompt_subst
-
 zstyle ':vcs_info:git:*' formats '%b'
+setopt prompt_subst
 
 NEWLINE=$'\n'
 PROMPT='${NEWLINE}%F{152}%1~%f %F{8}${vcs_info_msg_0_}%f${NEWLINE}%(?.%F{green}❯%f.%F{red}❯%f) '
+
 # [ -f "$HOME"/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh ] && source "$HOME"/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh 
 
-export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
+# export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
 
 #zoxide command with cd and starship
 # eval "$(zoxide init --cmd cd zsh)"
@@ -52,7 +64,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export MANPAGER="nvim +Man!"
+ MANPAGER="nvim +Man!"
 
 # aliases
 alias tn="$HOME/.local/bin/tmux-sessionizer"
@@ -60,6 +72,3 @@ alias ds="$HOME/.local/bin/docker-start"
 alias tetris="tetriscurses"
 alias v="nvim"
 alias c="clear"
-
-
-# One day
