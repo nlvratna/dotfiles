@@ -1,5 +1,3 @@
-
-
 # export TERM=xterm-256color
 # export COLORTERM=truecolor 
 
@@ -10,12 +8,18 @@
 # plugins=(zsh-syntax-highlighting)
 
 
+autoload -U colors && colors
+autoload -U vcs_info
 zmodload zsh/complist
 autoload -U compinit && compinit
 autoload -U tetriscurses # this is the only one I need
-autoload -U colors && colors
-autoload -U vcs_info
 
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b'
+setopt prompt_subst
+
+NEWLINE=$'\n'
+PROMPT='${NEWLINE}%F{blue}%2~%f %F{8}${vcs_info_msg_0_}%f${NEWLINE}%(?.%F{green}❯%f.%F{red}❯%f) '
 
 
 setopt no_case_glob no_case_match # make cmp case insensitive
@@ -31,25 +35,19 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTCONTROL=ignoreboth
 
+
 #❯
 # may be not now
 # bindkey -v
 #fzf
- source <(fzf --zsh)
- bindkey '^p' history-search-backward
- bindkey '^n' history-search-forward
- bindkey "^H" backward-kill-word
- bindkey "^j" backward-word
- bindkey "^k" forward-word
+source <(fzf --zsh)
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey "^H" backward-kill-word
+bindkey "^j" backward-word
+bindkey "^k" forward-word
 
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b'
-setopt prompt_subst
 
-NEWLINE=$'\n'
-PROMPT='${NEWLINE}%F{152}%1~%f %F{8}${vcs_info_msg_0_}%f${NEWLINE}%(?.%F{green}❯%f.%F{red}❯%f) '
-
-# [ -f "$HOME"/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh ] && source "$HOME"/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh 
 
 # export STARSHIP_CONFIG="$HOME"/.config/starship/starship.toml
 
@@ -64,7 +62,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
- MANPAGER="nvim +Man!"
+MANPAGER="nvim +Man!"
 
 # aliases
 alias tn="$HOME/.local/bin/tmux-sessionizer"
