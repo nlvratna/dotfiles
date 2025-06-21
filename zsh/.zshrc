@@ -10,10 +10,10 @@
 
 autoload -U colors && colors
 autoload -U vcs_info
+
 zmodload zsh/complist
 autoload -U compinit && compinit
 autoload -U tetriscurses # this is the only one I need
-
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b'
 setopt prompt_subst
@@ -62,7 +62,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-MANPAGER="nvim +Man!"
+export MANPAGER="nvim +Man!"
 
 # aliases
 alias tn="$HOME/.local/bin/tmux-sessionizer"
