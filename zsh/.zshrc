@@ -46,6 +46,7 @@ bindkey '^n' history-search-forward
 bindkey "^H" backward-kill-word
 bindkey "^j" backward-word
 bindkey "^k" forward-word
+bindkey -s ^g "tmux-sessionizer\n"
 
 
 
@@ -68,5 +69,5 @@ export MANPAGER="nvim +Man!"
 alias tn="$HOME/.local/bin/tmux-sessionizer"
 alias ds="$HOME/.local/bin/docker-start"
 alias tetris="tetriscurses"
-alias v="nvim"
+alias v="nvim ."
 alias c="clear"

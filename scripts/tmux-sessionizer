@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #this script has been stolen from ThePrimeagen
-#https://github.com/ThePrimeagen/tmux-sessionizer/tree/master
+# https://github.com/ThePrimeagen/tmux-sessionizer/tree/master
 
 switch_to() {
     if [[ -z $TMUX ]]; then
@@ -31,7 +31,7 @@ else
     \( -path '*/node_modules' -o -path '*/.git' -o -path '*/venv' \
        -o -path '*/__pycache__' -o -path '*/.cache' -o -path '*/target' \
        -o -path '*/build' -o -path '*/vendor' -o -path '*/pkg' -o -path '*/mod' \) \
-    -prune  -o -type d -print | fzf)
+    -prune  -o -type d -print || sed "s|$HOME/||"| fzf)
 fi
 fi
 
