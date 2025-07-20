@@ -1,18 +1,15 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-local mux = wezterm.mux
-
-local leader = { key = "a", mods = "CTRL" }
 
 local keys = {
 	{
-		key = "n",
-		mods = "LEADER",
+		key = "e",
+		mods = "CTRL",
 		action = act.SpawnTab("CurrentPaneDomain"),
 	},
 	{
 		key = "i",
-		mods = "CTRL",
+		mods = "LEADER",
 		action = act.ActivateCopyMode,
 	},
 	{
@@ -30,6 +27,12 @@ local keys = {
 		key = "s",
 		mods = "CTRL",
 		action = act.ActivateTabRelative(-1),
+	},
+
+	{
+		key = "g",
+		mods = "CTRL",
+		action = act.ShowLauncherArgs({ flags = "WORKSPACES" }),
 	},
 }
 

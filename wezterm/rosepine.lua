@@ -1,3 +1,5 @@
+--This is taken from rosepine wezterm plugin
+--https://github.com/neapsix/wezterm
 local main = {}
 
 local main_palette = {

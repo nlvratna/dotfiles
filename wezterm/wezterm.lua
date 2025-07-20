@@ -5,7 +5,8 @@ local keys = require("keys")
 local theme = require("rosepine")
 
 config.colors = theme.colors()
-config.font = wezterm.font("FiraCode Nerd Font")
+
+config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14
 
 config.hide_tab_bar_if_only_one_tab = false
@@ -15,9 +16,9 @@ config.enable_tab_bar = true
 config.default_cursor_style = "SteadyBlock"
 
 config.window_close_confirmation = "NeverPrompt"
-config.enable_wayland = true
+config.enable_wayland = false
 
-config.disable_default_key_bindings = true
+config.hide_mouse_cursor_when_typing = true
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = keys
 
