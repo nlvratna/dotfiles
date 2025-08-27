@@ -9,6 +9,7 @@
   "modules-center": [],
   "modules-right": [
     // add sound control
+    "pulseaudio",
     "memory",
     "battery",
     "network", 
@@ -19,15 +20,30 @@
     "tooltip-format": "{:%A, %B %d, %Y}"
   },
   "battery": {
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-icons": ["", "", "", "", ""],
+     "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "⚡{capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-full": "󰁹 {capacity}%",
+    "format-icons": {
+        "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+         "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+         "plugged": [""]
+     },
     "interval": 5,
     "states": {
       "warning": 30,
       "critical": 15
     }
+  },
+  "pulseaudio":{
+    "format": "{icon}  {volume}% ",
+    "format-muted": "",
+    "on-click": "pavucontrol",
+    "format-icons": ["", "", ""],
+    "scroll-step" : 0,
+  "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+",
+  "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
   },
   "memory": {
     "format": "{percentage}%",
