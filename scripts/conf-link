@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# I am not good at bash scripting
-
 for dir in "$HOME"/dotfiles/*; do
     basedir=$(basename "$dir")
     if [[ "$basedir" == scripts ]]; then

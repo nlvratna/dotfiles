@@ -62,6 +62,4 @@ esac
 export MANPAGER="nvim +Man!"
 
 
-# aliases
-alias v="nvim ."
 

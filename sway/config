@@ -88,9 +88,7 @@ input "7847:102:2.4G_Mouse" {
     middle_emulation enabled
 }
 
-# 2.4G Mouse - consumer control
 input "7847:102:2.4G_Mouse_Consumer_Control" {
-    # You can leave this as-is unless you want to remap some keys with something like `keyd`
 }
 
 # 2.4G Mouse - system control (keyboard interface)
@@ -108,7 +106,6 @@ input "7847:102:2.4G_Mouse_System_Control" {
 #
     bindsym $mod+Return exec $term
     bindsym $mod+b exec $browser
-    # bindsym $mod+o exec $apiclient
     bindsym $mod+z exec $fileManager
     bindsym $mod+c kill
 

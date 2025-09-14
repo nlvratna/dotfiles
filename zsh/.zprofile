@@ -11,6 +11,5 @@ export GOBIN=$HOME/go/bin
 
 if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" && -x "$(command -v hyprland)" ]]; then
     exec hyprland
-    #exec sway
 fi
 
