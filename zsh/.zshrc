@@ -31,7 +31,7 @@ SAVEHIST=10000
 HISTCONTROL=ignoreboth
 
 
-bindkey -v
+ bindkey -v
 
 #fzf
 source <(fzf --zsh)
@@ -42,21 +42,6 @@ bindkey "^k" forward-word
 bindkey -s ^g "tmux-sessionizer\n"
 
 
-# bun completions
-[ -s "/home/leela/.bun/_bun" ] && source "/home/leela/.bun/_bun"
-
-# NVM is slow?
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="/home/leela/.local/share/pnpm"
-case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 
 export MANPAGER="nvim +Man!"
