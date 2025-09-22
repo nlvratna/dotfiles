@@ -24,9 +24,9 @@ esac
 # bun completions
 [ -s "/home/leela/.bun/_bun" ] && source "/home/leela/.bun/_bun"
 
-if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" && -x "$(command -v hyprland)" ]]; then
-    exec hyprland
-fi
+# if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" && -x "$(command -v hyprland)" ]]; then
+#     exec hyprland
+# fi
 
 
 
