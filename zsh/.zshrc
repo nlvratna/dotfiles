@@ -31,7 +31,7 @@ SAVEHIST=10000
 HISTCONTROL=ignoreboth
 
 
- bindkey -v
+ # bindkey -v
 
 #fzf
 source <(fzf --zsh)
