@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local session = require("session")
 
 local keys = {
 	{
@@ -32,7 +33,7 @@ local keys = {
 	{
 		key = "g",
 		mods = "CTRL",
-		action = act.ShowLauncherArgs({ flags = "WORKSPACES" }),
+		action = wezterm.action_callback(session.toggle),
 	},
 }
 
