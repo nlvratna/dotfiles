@@ -37,10 +37,8 @@ bindkey -v
 source <(fzf --zsh)
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey "^j" backward-word
-bindkey "^k" forward-word
-bindkey -s ^g "tmux-sessionizer\n"
 
+bindkey -s ^g "tmux-sessionizer\n"
 
 
 
