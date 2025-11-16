@@ -45,12 +45,19 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s $selected_name -c $selected -d
+    tmux send-keys -t "$selected_name" "nvim ." C-m
+    tmux new-window -t "$selected_name" -c "$selected"
+    tmux select-window -t "$selected_name":1
+    tmux attach-session -t "$selected_name"
     exit 0
 fi
 
 if ! has_session $selected_name; then
     tmux new-session -ds $selected_name -c $selected
+    tmux send-keys -t "$selected_name" "nvim ." C-m
+    tmux new-window -t "$selected_name" -c "$selected"
+    tmux select-window -t "$selected_name":1
 fi
 
 switch_to $selected_name

@@ -10,7 +10,7 @@
   "modules-right": [
     // add sound control
     "pulseaudio",
-//    "memory",
+    "memory",
     "battery",
     "network", 
     "tray",
