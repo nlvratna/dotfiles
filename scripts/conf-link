@@ -12,6 +12,7 @@ for dir in "$HOME"/dotfiles/*; do
        ln -sfn  "$dir"/.zprofile "$HOME"
 
    elif [[ "$basedir" == keyd ]]; then
+       sudo mkdir -p /etc/keyd
        sudo ln -sfn "$dir"/* /etc/keyd
 
    else
