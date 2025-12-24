@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#this script has been stolen from ThePrimeagen
+#this script has been yanked from ThePrimeagen
 # https://github.com/ThePrimeagen/tmux-sessionizer/tree/master
 
 switch_to() {

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 
+#use hyprctl unix socket for this?
 MOUSE_NAME_HYPR="2.4g-mouse-1"
 TOUCHPAD_NAME_HYPR="elan071a:00-04f3:30fd-touchpad"
 
