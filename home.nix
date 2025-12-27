@@ -11,7 +11,7 @@
 in {
   home.username = "leela";
   home.homeDirectory = "/home/leela";
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   xdg.enable = true;
 
@@ -71,7 +71,7 @@ in {
     profileExtra = builtins.readFile ./zsh/zprofile;
   };
 
-  programs.tmux.enable = true;
+  # programs.tmux.enable = true;
 
   programs.direnv = {
     enable = true;
@@ -92,6 +92,7 @@ in {
   # ------------------------------------------------------------
 
   xdg.configFile."nvim".source = nvim;
+  xdg.configFile."tmux".source = ./tmux;
 
   xdg.configFile."kitty" = lib.mkIf (isLinux && !wsl) {
     source = ./kitty;
