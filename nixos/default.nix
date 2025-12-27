@@ -48,18 +48,23 @@
   # ------------------------------------------------------------
 
   environment.systemPackages = with pkgs; [
-    git
-    curl
-    wget
     vim
+    waybar
+    git
+    wl-clipboard
+    brave
   ];
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+  programs.hyprland.enable = true;
   # ------------------------------------------------------------
   # WSL-specific bits
   # ------------------------------------------------------------
 
-  wsl.enable = true;
-  wsl.defaultUser = "leela";
+  # wsl.enable = true;
+  # wsl.defaultUser = "leela";
 
   # ------------------------------------------------------------
   # Security

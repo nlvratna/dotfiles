@@ -29,7 +29,6 @@
 
     overlays = [
       (final: prev: {
-        brave = nixpkgs-unstable.legacyPackages.${prev.system}.brave;
       })
     ];
 

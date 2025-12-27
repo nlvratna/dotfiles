@@ -9,9 +9,13 @@
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
 in {
+  programs.home-manager.enable = true;
+
   home.username = "leela";
   home.homeDirectory = "/home/leela";
   home.stateVersion = "25.11";
+
+  programs.info.enable = false;
 
   xdg.enable = true;
 
@@ -25,24 +29,14 @@ in {
   #     tree
   #     curl
   #     btop
-  #     brave
   #
   #     cmake
   #     python3
   #
-  #     kitty
   #     neovim
   #   ]
   #   ++ lib.optionals (isLinux && !wsl) [
-  #     hyprland
-  #     xdg-desktop-portal-hyprland
-  #     waybar
-  #     grim
-  #     slurp
-  #     swaybg
-  #     wl-clipboard
-  #     firefox
-  #     rofi
+  #     kitty
   #   ]
   #   ++ lib.optionals wsl [
   #     wezterm
@@ -66,12 +60,17 @@ in {
 
   programs.zsh = {
     enable = true;
-
+    enableCompletion = true;
     initContent = builtins.readFile ./zsh/zshrc;
     profileExtra = builtins.readFile ./zsh/zprofile;
   };
 
-  # programs.tmux.enable = true;
+  programs.tmux.enable = true;
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.direnv = {
     enable = true;
@@ -80,6 +79,7 @@ in {
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
 
     extraPackages = with pkgs; [
       lua-language-server
@@ -94,8 +94,11 @@ in {
   xdg.configFile."nvim".source = nvim;
   xdg.configFile."tmux".source = ./tmux;
 
-  xdg.configFile."kitty" = lib.mkIf (isLinux && !wsl) {
-    source = ./kitty;
+  xdg.configFile."gtk-3.0" = lib.mkIf (isLinux && !wsl) {
+    source = ./gtk-3.0;
+  };
+  xdg.configFile."gtk-4.0" = lib.mkIf (isLinux && !wsl) {
+    source = ./gtk-4.0;
   };
 
   xdg.configFile."hypr" = lib.mkIf (isLinux && !wsl) {
