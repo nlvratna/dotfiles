@@ -1,48 +1,128 @@
 {
   config,
+  lib,
   pkgs,
+  nvim,
+  wsl ? false,
   ...
-}: {
+}: let
+  isDarwin = pkgs.stdenv.isDarwin;
+  isLinux = pkgs.stdenv.isLinux;
+in {
   home.username = "leela";
   home.homeDirectory = "/home/leela";
-
   home.stateVersion = "25.05";
 
-  programs.home-manager.enable = true;
+  xdg.enable = true;
+
+  home.packages = with pkgs;
+    [
+      git
+      ripgrep
+      fd
+      jq
+      fzf
+      tree
+      curl
+      btop
+      brave
+
+      cmake
+      python3
+
+      kitty
+      neovim
+    ]
+    ++ lib.optionals (isLinux && !wsl) [
+      hyprland
+      xdg-desktop-portal-hyprland
+      waybar
+      grim
+      slurp
+      swaybg
+      wl-clipboard
+      firefox
+      rofi
+    ]
+    ++ lib.optionals wsl [
+      waybar
+    ];
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    PAGER = "less -FirSwX";
+    LANG = "en_US.UTF-8";
+  };
 
   programs.git = {
     enable = true;
     settings = {
-      user = {
-        name = "nlvratna";
-        email = "ratnachowdary56@gmail.com";
-      };
+      user.name = "nlvratna";
+      user.email = "ratnachowdary56@gmail.com";
       color.ui = true;
-      alias = {
-        prettyprint = ''          log --graph --abbrev-commit --decorate --format=format:'%C(bold
-                      blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim
-                      white)- %an%C(reset)%C(auto)%d%C(reset)' --all'';
-      };
       github.user = "nlvratna";
     };
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+
+    initContent = ''
+      source ${config.xdg.configHome}/zsh/zshrc
+    '';
+
+    profileExtra = ''
+      source ${config.xdg.configHome}/zsh/zprofile
+    '';
+  };
+
   programs.tmux.enable = true;
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
 
-  xdg.configFile."nix/nix.conf".source = ./nix/nix.conf;
-  xdg.configFile."nvim".source = ./nvim;
-  xdg.configFile."hypr".source = ./hypr;
-  xdg.configFile."sway".source = ./sway;
-  xdg.configFile."waybar".source = ./waybar;
+  programs.neovim = {
+    enable = true;
 
-  xdg.configFile."kitty".source = ./kitty;
-  xdg.configFile."wezterm".source = ./wezterm;
-  xdg.configFile."ghostty".source = ./ghostty;
+    extraPackages = with pkgs; [
+      lua-language-server
+      stylua
+    ];
+  };
 
-  xdg.configFile."zsh".source = ./zsh;
+  # ------------------------------------------------------------
+  # Dotfiles
+  # ------------------------------------------------------------
+
+  xdg.configFile."nvim".source = nvim;
+
+  xdg.configFile."kitty" = lib.mkIf (isLinux && !wsl) {
+    source = ./kitty;
+  };
+
+  xdg.configFile."hypr" = lib.mkIf (isLinux && !wsl) {
+    source = ./hypr;
+  };
+
+  xdg.configFile."waybar" = lib.mkIf (isLinux && !wsl) {
+    source = ./waybar;
+  };
+
+  home.file."bin" = {
+    source = ./scripts;
+    recursive = true;
+    executable = true;
+  };
+
+  # ------------------------------------------------------------
+  # Nix
+  # ------------------------------------------------------------
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
 }

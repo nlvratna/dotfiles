@@ -36,10 +36,27 @@
         "type": "github"
       }
     },
+    "nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766817440,
+        "narHash": "sha256-WV5A+QPPnf6p2s5dmUNY5TFy6FAfSLIfn4p/hxfxQM8=",
+        "ref": "refs/heads/main",
+        "rev": "f7562311e4d763dd1ca7c2768c52758103feda5e",
+        "revCount": 68,
+        "type": "git",
+        "url": "file:./nvim"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:./nvim"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvim": "nvim"
       }
     }
   },
