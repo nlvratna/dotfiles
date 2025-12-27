@@ -27,5 +27,3 @@ if [[ -z "$DISPLAY" && "$(tty)" == "/dev/tty1" && -x "$(command -v hyprland)" ]]
     exec hyprland
 fi
 
-
-
