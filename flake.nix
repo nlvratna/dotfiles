@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
@@ -26,43 +25,49 @@
     nvim,
     ...
   }: let
+    system = "x86_64-linux";
+
     overlays = [
       (final: prev: {
         brave = nixpkgs-unstable.legacyPackages.${prev.system}.brave;
       })
     ];
 
-    mkPkgs = system:
+    pkgsFor = system:
       import nixpkgs {
         inherit system overlays;
         config.allowUnfree = true;
       };
 
-    mkHome = import ./lib/mkHome.nix {
-      inherit inputs mkPkgs nvim;
-    };
+    mkHome = {
+      username,
+      wsl ? false,
+    }:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor system;
+        extraSpecialArgs = {inherit nvim wsl;};
+        modules = [./home.nix];
+      };
   in {
     homeConfigurations = {
-      leela = mkHome {
-        system = "x86_64-linux";
-        username = "leela";
-      };
-
+      leela = mkHome {username = "leela";};
       leela-wsl = mkHome {
-        system = "x86_64-linux";
         username = "leela";
         wsl = true;
       };
     };
 
     nixosConfigurations.leela = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       modules = [
         nixos-wsl.nixosModules.wsl
         ./nixos/default.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.users.leela = import ./home/leela.nix;
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.leela = import ./home.nix;
           home-manager.extraSpecialArgs = {
             inherit nvim;
             wsl = false;

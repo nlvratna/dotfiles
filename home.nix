@@ -15,38 +15,38 @@ in {
 
   xdg.enable = true;
 
-  home.packages = with pkgs;
-    [
-      git
-      ripgrep
-      fd
-      jq
-      fzf
-      tree
-      curl
-      btop
-      brave
-
-      cmake
-      python3
-
-      kitty
-      neovim
-    ]
-    ++ lib.optionals (isLinux && !wsl) [
-      hyprland
-      xdg-desktop-portal-hyprland
-      waybar
-      grim
-      slurp
-      swaybg
-      wl-clipboard
-      firefox
-      rofi
-    ]
-    ++ lib.optionals wsl [
-      waybar
-    ];
+  # home.packages = with pkgs;
+  #   [
+  #     git
+  #     ripgrep
+  #     fd
+  #     jq
+  #     fzf
+  #     tree
+  #     curl
+  #     btop
+  #     brave
+  #
+  #     cmake
+  #     python3
+  #
+  #     kitty
+  #     neovim
+  #   ]
+  #   ++ lib.optionals (isLinux && !wsl) [
+  #     hyprland
+  #     xdg-desktop-portal-hyprland
+  #     waybar
+  #     grim
+  #     slurp
+  #     swaybg
+  #     wl-clipboard
+  #     firefox
+  #     rofi
+  #   ]
+  #   ++ lib.optionals wsl [
+  #     wezterm
+  #   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -67,13 +67,8 @@ in {
   programs.zsh = {
     enable = true;
 
-    initContent = ''
-      source ${config.xdg.configHome}/zsh/zshrc
-    '';
-
-    profileExtra = ''
-      source ${config.xdg.configHome}/zsh/zprofile
-    '';
+    initContent = builtins.readFile ./zsh/zshrc;
+    profileExtra = builtins.readFile ./zsh/zprofile;
   };
 
   programs.tmux.enable = true;
