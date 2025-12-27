@@ -53,6 +53,7 @@
     git
     wl-clipboard
     brave
+    keyd
   ];
 
   fonts.packages = with pkgs; [
@@ -71,4 +72,33 @@
   # ------------------------------------------------------------
 
   security.sudo.wheelNeedsPassword = false;
+
+  services.keyd = {
+    enable = true;
+
+    keyboards.default = {
+      ids = ["*"];
+      settings = {
+        main = {
+          leftalt = "layer(control)";
+          altgr = "layer(alt)";
+          capslock = "overload(layer, escape)";
+          "'" = "backspace";
+          backspace = "noop";
+        };
+
+        shift = {
+          "'" = "\"";
+        };
+
+        layer = {
+          i = "up";
+          j = "left";
+          k = "down";
+          l = "right";
+          apostrophe = "'";
+        };
+      };
+    };
+  };
 }
