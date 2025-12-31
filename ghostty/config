@@ -1,11 +1,9 @@
 theme = "Rose Pine"
 background = "#000000"
-cursor-color = "#524f67"
 
 font-family = "JetBrains Mono"
 font-size = 14
 
-confirm-close-surface = false
 mouse-hide-while-typing = true
 cursor-style = block
 
@@ -16,15 +14,10 @@ background-opacity = 0.8
 cursor-style-blink = false
 
 window-theme = ghostty
-#gtk-single-instance = true
+gtk-single-instance = true
 gtk-tabs-location = bottom
 gtk-wide-tabs = false
 window-padding-y = 2,0
 window-padding-balance = true
 window-decoration = false
-
-#keybind=ctrl+f=next_tab
-#keybind=ctrl+s=previous_tab
-#keybind=ctrl+e=new_tab
-#keybind=ctrl+d=close_surface
  

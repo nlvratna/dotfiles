@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 for dir in "$HOME"/dotfiles/*; do
     basedir=$(basename "$dir")
-    if [[ "$basedir" == scripts ]]; then
-        mkdir -p "$HOME"/.local/bin
-        ln -sfn "$dir"/* "$HOME"/.local/bin
 
-    elif [[ "$basedir" == zsh ]]; then
-        echo "creating symlink for zsh"
-       ln -sfn  "$dir"/.zshrc "$HOME"
-       ln -sfn  "$dir"/.zprofile "$HOME"
+    case "$basedir" in
+        scripts)
+            mkdir -p "$HOME/.local/bin"
+            cp -r "$dir"/. "$HOME/.local/bin"
+            ;;
 
-   elif [[ "$basedir" == keyd ]]; then
-       sudo mkdir -p /etc/keyd
-       sudo ln -sfn "$dir"/* /etc/keyd
+        zsh)
+            echo "creating symlinks for zsh"
+            ln -sf "$dir/.zshrc" "$HOME/.zshrc"
+            ln -sf "$dir/.zprofile" "$HOME/.zprofile"
+            ;;
 
-   else
-       mkdir -p   "$HOME"/.config/"$basedir"
-       ln -sfn  "$dir"/* "$HOME"/.config/"$basedir"
-    fi
+        keyd)
+            sudo install -Dm644 "$dir/default.conf" /etc/keyd/default.conf
+            ;;
+
+        *)
+            mkdir -p "$HOME/.config/$basedir"
+            cp -r "$dir"/. "$HOME/.config/$basedir"
+            ;;
+    esac
 done
