@@ -1,7 +1,8 @@
 theme = "Rose Pine"
 background = "#000000"
+cursor-color = "#524f67"
 
-font-family = "JetBrains Mono"
+font-family = "JetBrains Mono "
 font-size = 14
 
 mouse-hide-while-typing = true

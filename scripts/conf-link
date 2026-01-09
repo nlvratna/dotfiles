@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 for dir in "$HOME"/dotfiles/*; do
     basedir=$(basename "$dir")
@@ -7,7 +6,7 @@ for dir in "$HOME"/dotfiles/*; do
     case "$basedir" in
         scripts)
             mkdir -p "$HOME/.local/bin"
-            cp -r "$dir"/. "$HOME/.local/bin"
+            ln -sf "$dir"/* "$HOME/.local/bin"
             ;;
 
         zsh)
@@ -17,12 +16,14 @@ for dir in "$HOME"/dotfiles/*; do
             ;;
 
         keyd)
-            sudo install -Dm644 "$dir/default.conf" /etc/keyd/default.conf
+            echo "copying keyd config"
+            sudo mkdir -p /etc/keyd
+            sudo cp "$dir/default.conf" /etc/keyd/default.conf
             ;;
 
         *)
             mkdir -p "$HOME/.config/$basedir"
-            cp -r "$dir"/. "$HOME/.config/$basedir"
+            ln -sf "$dir"/* "$HOME/.config/$basedir"
             ;;
     esac
 done

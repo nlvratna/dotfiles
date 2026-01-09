@@ -45,4 +45,4 @@ bindkey -s ^g "tmux-sessionizer\n"
 export MANPAGER="nvim +Man!"
 
 
-
+# alias tmux='tmux -u'
