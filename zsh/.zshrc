@@ -44,5 +44,5 @@ bindkey -s ^g "tmux-sessionizer\n"
 
 export MANPAGER="nvim +Man!"
 
+eval "$(direnv hook zsh)"
 
-# alias tmux='tmux -u'
