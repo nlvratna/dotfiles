@@ -1,6 +1,6 @@
-theme = "Rose Pine"
-background = "#000000"
-cursor-color = "#524f67"
+theme = "TokyoNight Night"
+# background = "#000000"
+#cursor-color = "#524f67"
 
 font-family = "JetBrains Mono "
 font-size = 14
@@ -10,7 +10,7 @@ cursor-style = block
 
 shell-integration-features = no-cursor
 
-background-opacity = 0.8
+# background-opacity = 0.8
 
 cursor-style-blink = false
 

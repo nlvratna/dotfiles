@@ -38,11 +38,21 @@ source <(fzf --zsh)
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-bindkey -s ^g "tmux-sessionizer\n"
-
-
+# bindkey -s ^g "tmux-sessionizer\n"
 
 export MANPAGER="nvim +Man!"
 
-eval "$(direnv hook zsh)"
+# bun completions
+[ -s "/home/leela/.bun/_bun" ] && source "/home/leela/.bun/_bun"
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/leela/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
