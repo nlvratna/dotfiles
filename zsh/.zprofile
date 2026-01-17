@@ -4,9 +4,12 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 # export TERM="xterm-256color"
 
-export PATH=$HOME/bin:$HOME/.local/bin:$HOME:$PATH
-export PATH=go/bin:$PATH
-export GOBIN=$HOME/go/bin
+# Base PATH
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Go
+export GOBIN="$HOME/go/bin"
+export PATH="$GOBIN:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
