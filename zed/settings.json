@@ -1,0 +1,141 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "multi_cursor_modifier": "alt",
+  "text_rendering_mode": "platform_default",
+  "buffer_line_height": "comfortable",
+  "base_keymap": "VSCode",
+  "seed_search_query_from_cursor": "selection",
+  "show_edit_predictions": false,
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    },
+    "blame": {
+      "show_avatar": false
+    }
+  },
+  "git_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "button": true
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "agent": {
+    "expand_terminal_card": false,
+    "expand_edit_card": false,
+    "enable_feedback": false,
+    "button": false,
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "use_system_window_tabs": true,
+  "rounded_selection": true,
+  "tab_bar": {
+    "show_tab_bar_buttons": false,
+    "show_nav_history_buttons": false,
+    "show": false
+  },
+  "title_bar": {
+    "show_user_picture": false,
+    "show_user_menu": false,
+    "show_sign_in": false,
+    "show_onboarding_banner": false,
+    "show_project_items": false
+  },
+  "relative_line_numbers": "enabled",
+  "debugger": {
+    "button": false
+  },
+  "search": {
+    "whole_word": true,
+    "regex": true,
+    "button": false
+  },
+  "diagnostics": {
+    "button": false
+  },
+  "terminal": {
+    "button": false
+  },
+  "status_bar": {
+    "cursor_position_button": false
+  },
+  "project_panel": {
+    "git_status": true,
+    "button": false
+  },
+  "colorize_brackets": true,
+  "use_auto_surround": false,
+  "use_autoclose": false,
+  "toolbar": {
+    "agent_review": false,
+    "selections_menu": false,
+    "quick_actions": false,
+    "breadcrumbs": false
+  },
+  "scrollbar": {
+    "axes": {
+      "horizontal": false,
+      "vertical": false
+    },
+    "show": "never"
+  },
+  "hide_mouse": "on_typing_and_movement",
+  "cursor_shape": "block",
+  "cursor_blink": false,
+  "buffer_font_family": "JetBrains Mono",
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false
+  },
+  "session": {
+    "restore_unsaved_buffers": false,
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "vim": {
+    "highlight_on_yank_duration": 150
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "ui_font_size": 15.0,
+  "buffer_font_size": 15.0,
+  "theme": "Tokyo Night",
+  "disable_ai": true,
+  "format_on_save": "on",
+  "formatter": "language_server",
+  "restore_on_startup": "empty_tab",
+  //lsp settings for go and zig for now
+  "languages": {},
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "gofumpt": true,
+        "analyses": {
+          "unusedparams": true
+        }
+      }
+    },
+    "clangd": {
+      "initialization_options": {
+        "usePlaceholders": false
+      }
+    }
+  }
+}
