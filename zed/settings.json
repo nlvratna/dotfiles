@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "show_completions_on_input": false,
+  "show_completions_on_input": true,
   "multi_cursor_modifier": "alt",
   "text_rendering_mode": "platform_default",
   "buffer_line_height": "comfortable",
@@ -62,7 +62,7 @@
   },
   "search": {
     "whole_word": true,
-    "regex": true,
+    "regex": false,
     "button": false
   },
   "diagnostics": {

@@ -20,7 +20,7 @@
       "space f": "file_finder::Toggle",
       "space o": "tab_switcher::Toggle",
       "space e ": "pane::CloseActiveItem",
-      "ctrl-b": "project_panel::ToggleFocus",
+      "ctrl-m": "project_panel::ToggleFocus",
       "space d": "diagnostics::Deploy",
       "space /": "workspace::NewSearch",
       "space v": "editor::ToggleInlineDiagnostics",
@@ -75,7 +75,8 @@
       "ctrl-z": "workspace::ToggleZoom",
       "ctrl-x": "tab_switcher::CloseSelectedItem",
       "ctrl-a j ": "terminal_panel::Toggle",
-      "ctrl-shift-n": "workspace::Open"
+      "ctrl-shift-n": "workspace::Open",
+      "ctrl-m": "workspace::ToggleLeftDock",
     }
-  }
+  },
 ]
