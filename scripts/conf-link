@@ -21,6 +21,7 @@ for dir in "$HOME"/dotfiles/*; do
             sudo cp "$dir/default.conf" /etc/keyd/default.conf
             ;;
 
+        mise.local.toml);;
         *)
             mkdir -p "$HOME/.config/$basedir"
             ln -sf "$dir"/* "$HOME/.config/$basedir"

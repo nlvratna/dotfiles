@@ -56,7 +56,8 @@
     "bindings": {
       "ctrl-t ": "workspace::NewTerminal",
       "ctrl-x": "pane::CloseActiveItem",
-      "ctrl-p": null
+      "ctrl-p": null,
+      "ctrl-m": "file_finder::Toggle"
     }
   },
   {
@@ -76,7 +77,7 @@
       "ctrl-x": "tab_switcher::CloseSelectedItem",
       "ctrl-a j ": "terminal_panel::Toggle",
       "ctrl-shift-n": "workspace::Open",
-      "ctrl-m": "workspace::ToggleLeftDock",
+      "ctrl-m": "workspace::ToggleLeftDock"
     }
-  },
+  }
 ]
