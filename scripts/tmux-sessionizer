@@ -48,8 +48,8 @@ new_tmux_session_or_window() {
 
     if ! has_session "$session"; then
         tmux new-session -ds "$session" -c "$dir" "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8; exec \$SHELL"
-        tmux new-window -t "$session" -c "$dir" "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8; exec \$SHELL"
-        tmux select-window -t "$session":1
+        # tmux new-window -t "$session" -c "$dir" "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8; exec \$SHELL"
+        # tmux select-window -t "$session":1
     fi
 }
 

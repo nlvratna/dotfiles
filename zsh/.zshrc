@@ -43,3 +43,5 @@ bindkey -s ^g "tmux-sessionizer\n"
 export MANPAGER="nvim +Man!"
 
 eval "$(mise activate zsh)"
+
+alias mt="touch mise.local.toml && mise trust"
