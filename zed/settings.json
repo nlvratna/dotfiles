@@ -7,6 +7,21 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Onyx Dark"
+  },
+  "theme_overrides": {
+    "Onyx Dark": {
+      "players": [
+        {
+          "cursor": "#cccccc",
+          "selection": "#74ade83d"
+        },
+      ]
+    },
+  },
   "auto_update_extensions": {
     "zig": false
   },
@@ -102,7 +117,7 @@
     },
     "show": "never"
   },
-  "hide_mouse": "on_typing_and_movement",
+  "hide_mouse": "on_typing_and_action",
   "cursor_shape": "block",
   "cursor_blink": false,
   "buffer_font_family": "JetBrains Mono",
@@ -119,13 +134,13 @@
     "highlight_on_yank_duration": 150
   },
   "icon_theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "Zed (Default)",
     "dark": "Zed (Default)"
   },
   "ui_font_size": 15.0,
   "buffer_font_size": 15.0,
-  "theme": "Tokyo Night",
+  //"theme": "Tokyo Night",
   //editor
   "disable_ai": true,
   "format_on_save": "on",
