@@ -6,8 +6,8 @@ monitor=eDP-1,preferred,auto,1
 $terminal = ghostty
 $menu = rofi -show drun
 # $browser = zen-browser
-# $browser = helium-browser
-$browser = brave-origin-beta
+$browser = helium-browser
+# $browser = brave-origin-beta
 # $browser = brave
 $mainMod = Alt_R
 
@@ -20,11 +20,10 @@ exec-once = touchpad-disable
 # exec-once = sh -c "docker start searxng"
 
 exec = swaybg -i ~/dotfiles/hypr/mysticforset.png -m fill
-
-
 env = XCURSOR_THEME,BreezeX-RosePine-Linux
 env = XCURSOR_SIZE,18
 # env = GTK_THEME ,Adwaita-dark
+
 
 env = XDG_CURRENT_DESKTOP,Hyprland
 env = GDK_BACKEND,wayland,x11,*
@@ -182,7 +181,7 @@ bind = $mainMod, Return, exec, $terminal
 bind = $mainMod, b, exec, $browser
 bind = $mainMod, c, killactive,
 bind = $mainMod, Space, exec, $menu
-bind = $mainMod, p, exec, sh -c 'killall firefox chrome brave 2>/dev/null;  systemctl poweroff'
+bind = $mainMod, p, exec, sh -c 'killall firefox chrome brave helium 2>/dev/null;  systemctl poweroff'
 
 bind = $mainMod, f, fullscreen, 0
 binds{
@@ -238,7 +237,6 @@ bindel = $mainMod, d, exec, brightnessctl set 5%+
 bind = , Print, exec, grim -g "$(slurp)" - | wl-copy
 bind = Control, Print, exec, grim - | wl-copy
 
-bind = $mainMod,z,exec,hyprcap rec -c -n
 
 bind = $mainMod, mouse_down, workspace, e+0
 bind = $mainMod, mouse_up, workspace, e-1

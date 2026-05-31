@@ -1,14 +1,10 @@
-hl.monitor({
-	output = "eDP-1",
-	mode = "preferred",
-	position = "auto",
-	scale = "1",
-})
+hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = "1" })
 
 local terminal = "ghostty"
 local menu = "rofi -show drun"
-local browser = "brave-origin-beta"
-local mainMod = "Alt_r"
+-- local browser = "brave-origin-beta"
+local browser = "helium-browser"
+local mainMod = "ALT"
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
@@ -151,63 +147,55 @@ hl.window_rule({
 	pin = true,
 })
 
-hl.bind(mainMod .. " +Return", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " +b", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " +c", hl.dsp.window.close())
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
+hl.bind(mainMod .. "+ b", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + c ", hl.dsp.window.close())
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
--- hl.bind(mainMod .. " + p", hl.dsp.exec_cmd("sh -c 'killall firefox chrome brave 2>/dev/null; systemctl poweroff'"))
--- hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen("0"))
--- hl.bind(mainMod .. " + v", hl.dsp.exec_cmd("killall waybar || waybar"))
---
--- hl.bind("META + mouse:272", hl.dsp.window.drag(), { mouse = true })
--- hl.bind("META + mouse:272", hl.dsp.window.float({ action = "toggle" }))
--- hl.bind("META + mouse:273", hl.dsp.window.resize(), { mouse = true })
---
--- hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
--- hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
--- hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
--- hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
---
--- for i = 1, 10 do
--- 	local key = i % 10
--- 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
--- 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
--- end
---
--- hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+0" }))
--- hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
---
--- local repLock = { locked = true, repeating = true }
---
--- hl.bind(mainMod .. " + w", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"), repLock)
--- hl.bind(mainMod .. " + e", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), repLock)
--- hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), repLock)
--- hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), repLock)
---
--- hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
--- hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
--- hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
--- hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
---
--- hl.bind(mainMod .. " + s", hl.dsp.exec_cmd("brightnessctl set 5%-"), repLock)
--- hl.bind(mainMod .. " + d", hl.dsp.exec_cmd("brightnessctl set 5%+"), repLock)
---
--- hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
--- hl.bind("Control + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
---
--- hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exit())
---
--- hl.bind(mainMod .. " + r", hl.dsp.submap("resize"))
---
--- hl.bind("h", hl.dsp.window.resize("-10 0"), { submap = "resize", repeating = true })
--- hl.bind("j", hl.dsp.window.resize("0 10"), { submap = "resize", repeating = true })
--- hl.bind("k", hl.dsp.window.resize("0 -10"), { submap = "resize", repeating = true })
--- hl.bind("l", hl.dsp.window.resize("10 0"), { submap = "resize", repeating = true })
---
--- hl.bind("Left", hl.dsp.window.resize("-10 0"), { submap = "resize", repeating = true })
--- hl.bind("Down", hl.dsp.window.resize("0 10"), { submap = "resize", repeating = true })
--- hl.bind("Up", hl.dsp.window.resize("0 -10"), { submap = "resize", repeating = true })
--- hl.bind("Right", hl.dsp.window.resize("10 0"), { submap = "resize", repeating = true })
---
--- hl.bind("Return", hl.dsp.submap("reset"), { submap = "resize" })
--- hl.bind("Escape", hl.dsp.submap("reset"), { submap = "resize" })
+hl.bind(
+	mainMod .. " + p",
+	hl.dsp.exec_cmd("sh -c 'killall firefox chrome brave helium 2>/dev/null; systemctl poweroff'")
+)
+hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen("0"))
+hl.bind(mainMod .. " + v", hl.dsp.exec_cmd("killall waybar || waybar"))
+
+hl.bind("META + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind("META + SHIFT + mouse:272", hl.dsp.window.float({ action = "toggle" }))
+hl.bind("META + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- bindm = META, mouse:272, movewindow
+-- bindc = META, mouse:272, togglefloating
+-- bindm = META, mouse:273, resizewindowedge
+
+hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
+
+for i = 1, 10 do
+	local key = i % 10
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+end
+
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+0" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+
+local repLock = { locked = true, repeating = true }
+
+hl.bind(mainMod .. " + w", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"), repLock)
+hl.bind(mainMod .. " + e", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), repLock)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), repLock)
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), repLock)
+
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+
+hl.bind(mainMod .. " + s", hl.dsp.exec_cmd("brightnessctl set 5%-"), repLock)
+hl.bind(mainMod .. " + d", hl.dsp.exec_cmd("brightnessctl set 5%+"), repLock)
+
+hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
+
+hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exit())
