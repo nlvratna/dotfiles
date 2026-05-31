@@ -155,16 +155,12 @@ hl.bind(
 	mainMod .. " + p",
 	hl.dsp.exec_cmd("sh -c 'killall firefox chrome brave helium 2>/dev/null; systemctl poweroff'")
 )
-hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen("0"))
+hl.bind(mainMod .. " + SHIFT +  f", hl.dsp.window.fullscreen("0"))
 hl.bind(mainMod .. " + v", hl.dsp.exec_cmd("killall waybar || waybar"))
 
 hl.bind("META + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind("META + SHIFT + mouse:272", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + f", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("META + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
--- bindm = META, mouse:272, movewindow
--- bindc = META, mouse:272, togglefloating
--- bindm = META, mouse:273, resizewindowedge
 
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))

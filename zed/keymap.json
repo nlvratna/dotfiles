@@ -79,5 +79,5 @@
       "ctrl-shift-n": "workspace::Open",
       "ctrl-m": "workspace::ToggleLeftDock"
     }
-  }
+  },
 ]
