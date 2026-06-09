@@ -9,7 +9,7 @@ while true; do
     if hyprctl devices | grep -i "$MOUSE_NAME_HYPR" >/dev/null; then
        hyprctl eval 'hl.device({ name = "elan071a:00-04f3:30fd-touchpad", enabled = false })'
     else
-       hyprctl eval 'hl.device({ name = "elan071a:00-04f3:30fd-touchpad", enabled = false })'
+       hyprctl eval 'hl.device({ name = "elan071a:00-04f3:30fd-touchpad", enabled = true })'
     fi
   sleep 5
 done
