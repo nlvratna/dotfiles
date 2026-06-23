@@ -20,7 +20,6 @@ for dir in "$HOME"/dotfiles/*; do
             sudo mkdir -p /etc/keyd
             sudo cp "$dir/default.conf" /etc/keyd/default.conf
             ;;
-
         mise.local.toml);;
         *)
             mkdir -p "$HOME/.config/$basedir"

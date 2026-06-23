@@ -2,7 +2,7 @@ hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = "1
 
 local terminal = "ghostty"
 local menu = "rofi -show drun"
-local browser = "brave-origin-beta"
+local browser = "brave-origin"
 -- local browser = "helium-browser"
 local mainMod = "ALT"
 

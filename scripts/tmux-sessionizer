@@ -16,7 +16,11 @@ has_session() {
 }
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+    selected=$(cd "$1" 2>/dev/null && pwd)
+    if [[ -z $selected ]]; then
+        echo "Directory not found: $1"
+        exit 1
+    fi
 else
     if command -v fd >/dev/null 2>&1; then
         selected=$(fd --type d . --full-path "$HOME" --max-depth 3 \
@@ -31,12 +35,12 @@ else
                -o -path '*/build' -o -path '*/vendor' -o -path '*/pkg' -o -path '*/mod' \) \
             -prune -o -type d -print | sed "s|$HOME/||" | fzf)
     fi
-fi
 
-if [[ -z $selected ]]; then
-    exit 0
-else
-    selected="$HOME/$selected"
+    if [[ -z $selected ]]; then
+        exit 0
+    else
+        selected="$HOME/$selected"
+    fi
 fi
 
 selected_name=$(basename "$selected" | tr . _)
@@ -48,8 +52,6 @@ new_tmux_session_or_window() {
 
     if ! has_session "$session"; then
         tmux new-session -ds "$session" -c "$dir" "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8; exec \$SHELL"
-        # tmux new-window -t "$session" -c "$dir" "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8; exec \$SHELL"
-        # tmux select-window -t "$session":1
     fi
 }
 
