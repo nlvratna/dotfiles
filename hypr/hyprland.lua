@@ -10,8 +10,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd(terminal)
 	hl.exec_cmd("swaync")
-	hl.exec_cmd("touchpad-disable")
+	-- hl.exec_cmd("touchpad-disable")
 	hl.exec_cmd("swaybg -i ~/dotfiles/hypr/mysticforset.png -m fill")
+	hl.exec_cmd("hyprctl eval \"hl.device({ name = 'elan071a:00-04f3:30fd-touchpad', enabled = false })\"")
 end)
 
 hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")
@@ -195,3 +196,14 @@ hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
 hl.bind("CTRL + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
 
 hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exit())
+
+local mouse_enabled = true
+hl.bind(mainMod .. " + z", function()
+	if mouse_enabled == true then
+		hl.device({ name = "elan071a:00-04f3:30fd-touchpad", enabled = false })
+		mouse_enabled = not mouse_enabled
+	else
+		hl.device({ name = "elan071a:00-04f3:30fd-touchpad", enabled = true })
+		mouse_enabled = not mouse_enabled
+	end
+end)
