@@ -74,7 +74,7 @@ hl.config({
 			render_power = 3,
 			color = "rgba(1a1a1aee)",
 		},
-		dim_special = 0.1,
+		dim_special = 0.0,
 	},
 
 	animations = {
@@ -147,7 +147,6 @@ hl.window_rule({ match = { title = "^(.*)(wants to open)$" }, float = true, size
 
 hl.window_rule({
 	match = { title = "^(YouTube Music)(.*)$" },
-	size = "(monitor_w*.45) (monitor_h*.35)",
 	workspace = "special:magic silent",
 })
 
