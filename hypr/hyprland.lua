@@ -1,17 +1,18 @@
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = "1" })
 
 local terminal = "ghostty"
-local menu = "rofi -show drun"
+-- local menu = "rofi -show drun"
 local browser = "brave-origin"
 -- local browser = "helium-browser"
 local mainMod = "ALT"
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("waybar")
+	-- hl.exec_cmd("waybar")
 	hl.exec_cmd(terminal)
-	hl.exec_cmd("swaync")
+	hl.exec_cmd("noctalia")
+	-- hl.exec_cmd("swaync")
 	-- hl.exec_cmd("touchpad-disable")
-	hl.exec_cmd("swaybg -i ~/dotfiles/hypr/mysticforset.png -m fill")
+	-- hl.exec_cmd("swaybg -i ~/dotfiles/hypr/mysticforset.png -m fill")
 	hl.exec_cmd("hyprctl eval \"hl.device({ name = 'elan071a:00-04f3:30fd-touchpad', enabled = false })\"")
 end)
 
@@ -22,7 +23,7 @@ hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
-hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 hl.config({
 	cursor = {
@@ -32,12 +33,13 @@ hl.config({
 
 	general = {
 		gaps_in = 4,
-		gaps_out = {
-			top = 3,
-			left = 10,
-			right = 12,
-			bottom = 10,
-		},
+		gaps_out = 10,
+		-- gaps_out = {
+		-- 	top = 3,
+		-- 	left = 10,
+		-- 	right = 12,
+		-- 	bottom = 10,
+		-- },
 		border_size = 0,
 
 		col = {
@@ -148,14 +150,36 @@ hl.window_rule({
 	pin = true,
 })
 
+local ipc = "noctalia msg"
+
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mainMod .. "+ b", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + c ", hl.dsp.window.close())
-hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
+
+-- Core binds
+hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
+hl.bind(mainMod .. "+SHIFT +S", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center"))
+hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. " settings-toggle"))
+hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exec_cmd(ipc .. " session lock"))
+
+-- Media keys
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. " volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. " volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. " volume-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. " brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. " brightness-down"))
+
+-- Noctalia Settings
+hl.window_rule({
+	match = { class = "dev.noctalia.Noctalia" },
+	float = true,
+})
+
 hl.bind(
 	mainMod .. " + p",
 	hl.dsp.exec_cmd("sh -c 'killall firefox chrome brave helium 2>/dev/null; systemctl poweroff'")
 )
+
 hl.bind(mainMod .. " + SHIFT +  f", hl.dsp.window.fullscreen("0"))
 hl.bind(mainMod .. " + v", hl.dsp.exec_cmd("killall waybar || waybar"))
 
@@ -179,23 +203,21 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 local repLock = { locked = true, repeating = true }
 
-hl.bind(mainMod .. " + w", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"), repLock)
-hl.bind(mainMod .. " + e", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), repLock)
+hl.bind(mainMod .. " + w", hl.dsp.exec_cmd(ipc .. " volume-down 2"), repLock)
+hl.bind(mainMod .. " + e", hl.dsp.exec_cmd(ipc .. " volume-up 2"), repLock)
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), repLock)
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), repLock)
 
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd(ipc .. " media next"), repLock)
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd(ipc .. " media previous"), repLock)
+--
+hl.bind(mainMod .. " + s", hl.dsp.exec_cmd(ipc .. " brightness-down 2%"), repLock)
+hl.bind(mainMod .. " + d", hl.dsp.exec_cmd(ipc .. " brightness-up 2%"), repLock)
 
-hl.bind(mainMod .. " + s", hl.dsp.exec_cmd("brightnessctl set 5%-"), repLock)
-hl.bind(mainMod .. " + d", hl.dsp.exec_cmd("brightnessctl set 5%+"), repLock)
-
-hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | wl-copy'))
-hl.bind("CTRL + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
-
-hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exit())
+hl.bind("Print", hl.dsp.exec_cmd(ipc .. " screenshot-region"))
+hl.bind("CTRL + Print", hl.dsp.exec_cmd(ipc .. " screenshot-fullscreen"))
 
 local mouse_enabled = true
 hl.bind(mainMod .. " + z", function()

@@ -1,0 +1,66 @@
+[shell]
+ui_scale              = 1.0             # content scale for panels and non-bar shell UI
+corner_radius_scale   = 1.0             # 0 = square, 1 = default, 2 = extra rounded
+font_family           = "monospace"     # Pango family string; Fontconfig handles fallback
+telemetry_enabled     = false           # anonymous startup ping
+setup_wizard_enabled  = false           # open first-run wizard while the marker is missing
+settings_show_advanced = true           # show advanced settings by default in Settings
+show_location         = false           # show weather location text in shell UI
+polkit_agent          = true   
+launch_apps_as_systemd_services = false
+app_icon_colorize     = true            # recolor application icons across the shell
+clipboard_enabled     = true            # false disables clipboard history/panel (basic copy & paste still work)
+clipboard_history_max_entries = 500     # unpinned history cap (10–10000); pinned entries are exempt
+clipboard_auto_paste  = "auto"          # off | auto | ctrl_v | ctrl_shift_v | shift_insert
+
+[shell.animation]
+enabled = true
+speed   = 2.0   # 1.0 = normal, 0.5 = 2× slower, 2.0 = 2× faster
+
+[shell.shadow]
+direction = "down"  # center, up, down, left, right, up_left, up_right, down_left, down_right
+alpha     = 0.25    # multiplied by each component's background opacity
+
+[shell.panel]
+transparency_mode     = "solid"  # solid | soft | glass; controls floating/centered opacity and card translucency
+borders               = false    # outline on floating/centered panel shells and section cards inside panels
+shadow                = false    # cast the global [shell.shadow] from panel surfaces
+launcher_placement    = "centered" # attached | floating | centered
+polkit_placement      = "floating"
+polkit_position       = "center"
+
+[shell.launcher]
+categories     = false  # show launcher category filters; Tab toggles them while open
+show_icons     = true  # show application icons in launcher results
+compact        = true   # smaller icons and tighter rows; hides subtitles
+session_search = true   # include session actions in general search, not only behind /session
+sort_by_usage  = true   # boost frequently used apps and show Recently Used filter
+app_grid       = true
+
+[shell.screenshot]
+save_to_file      = false                       # write captures as PNG to the output directory
+directory         = "/home/leela/Pictures/Screenshots" # output folder; empty = ~/Pictures
+filename_pattern  = "screenshot_%Y%m%d_%H%M%S"  # strftime pattern, no extension (.png is added)
+copy_to_clipboard = true                        # also place the PNG on the clipboard
+freeze_screen     = true                        # freeze the desktop before region selection
+confirm_region    = false                       # confirm region captures with Enter or Space
+
+[keybinds]
+validate = ["return", "kp_enter"]
+cancel   = ["escape"]
+left     = ["left"]
+right    = ["right"]
+up       = ["up"]
+down     = ["down"]
+tab_next = ["tab"]
+tab_previous = ["shift+tab", "iso_left_tab"]
+
+[battery]
+warning_threshold = 15
+
+
+[control_center]
+sidebar = "compact"
+
+[location]
+auto_locate = true     

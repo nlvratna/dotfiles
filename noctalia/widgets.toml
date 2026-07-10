@@ -1,0 +1,9 @@
+[widget.brightness]
+scroll_step = 2
+
+[widget.volume]
+scroll_step = 2
+
+[widget.network]
+show_label = false
+
