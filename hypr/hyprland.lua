@@ -1,19 +1,16 @@
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = "1" })
 
 local terminal = "ghostty"
--- local menu = "rofi -show drun"
 local browser = "brave-origin"
--- local browser = "helium-browser"
 local mainMod = "ALT"
 
 hl.on("hyprland.start", function()
-	-- hl.exec_cmd("waybar")
 	hl.exec_cmd(terminal)
 	hl.exec_cmd("noctalia")
-	-- hl.exec_cmd("swaync")
-	-- hl.exec_cmd("touchpad-disable")
-	-- hl.exec_cmd("swaybg -i ~/dotfiles/hypr/mysticforset.png -m fill")
 	hl.exec_cmd("hyprctl eval \"hl.device({ name = 'elan071a:00-04f3:30fd-touchpad', enabled = false })\"")
+	hl.exec_cmd(
+		"/opt/brave-origin-bin/brave-origin --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod"
+	)
 end)
 
 hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")
@@ -43,7 +40,13 @@ hl.config({
 		border_size = 0,
 
 		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
+			active_border = {
+				colors = {
+					"rgba(33ccffee)",
+					"rgba(00ff99ee)",
+				},
+				angle = 45,
+			},
 			inactive_border = "rgba(595959aa)",
 		},
 
@@ -71,6 +74,7 @@ hl.config({
 			render_power = 3,
 			color = "rgba(1a1a1aee)",
 		},
+		dim_special = 0.1,
 	},
 
 	animations = {
@@ -129,8 +133,8 @@ hl.config({
 	},
 })
 
-hl.window_rule({ match = { class = "^()$", title = "^()$" } })
-hl.window_rule({ match = { title = "^(Volume Control)$" }, float = true, size = "(monitor_w*.45) (monitor_h*.45)" })
+-- hl.window_rule({ match = { class = "^()$", title = "^()$" } })
+-- hl.window_rule({ match = { title = "^(Volume Control)$" }, float = true, size = "(monitor_w*.45) (monitor_h*.45)" })
 
 hl.window_rule({ match = { title = "^(Open File)(.*)$" }, center = true, float = true })
 hl.window_rule({ match = { title = "^(Select a File)(.*)$" }, center = true, float = true })
@@ -142,6 +146,12 @@ hl.window_rule({ match = { title = "^(.*)(wants to save)$" }, center = true, flo
 hl.window_rule({ match = { title = "^(.*)(wants to open)$" }, float = true, size = "900 600" })
 
 hl.window_rule({
+	match = { title = "^(YouTube Music)(.*)$" },
+	size = "(monitor_w*.45) (monitor_h*.35)",
+	workspace = "special:magic silent",
+})
+
+hl.window_rule({
 	match = { title = "^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$" },
 	float = true,
 	keep_aspect_ratio = true,
@@ -150,16 +160,15 @@ hl.window_rule({
 	pin = true,
 })
 
-local ipc = "noctalia msg"
-
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
 hl.bind(mainMod .. "+ b", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + c ", hl.dsp.window.close())
 
+local ipc = "noctalia msg"
 -- Core binds
 hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
-hl.bind(mainMod .. "+SHIFT +S", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center"))
-hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. " settings-toggle"))
+hl.bind(mainMod .. "+a", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center"))
+hl.bind(mainMod .. "+SHIFT + a", hl.dsp.exec_cmd(ipc .. " settings-toggle"))
 hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exec_cmd(ipc .. " session lock"))
 
 -- Media keys
@@ -205,8 +214,6 @@ local repLock = { locked = true, repeating = true }
 
 hl.bind(mainMod .. " + w", hl.dsp.exec_cmd(ipc .. " volume-down 2"), repLock)
 hl.bind(mainMod .. " + e", hl.dsp.exec_cmd(ipc .. " volume-up 2"), repLock)
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), repLock)
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), repLock)
 
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
@@ -229,3 +236,7 @@ hl.bind(mainMod .. " + z", function()
 		mouse_enabled = not mouse_enabled
 	end
 end)
+
+hl.bind("SUPER + C", hl.dsp.window.move({ workspace = "special:magic" }))
+-- To see the hidden window and workspace you can use:
+hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("magic"))
