@@ -4,8 +4,10 @@ local terminal = "ghostty"
 local browser = "brave-origin"
 local mainMod = "ALT"
 
+require("noctalia").apply_theme()
+
 hl.on("hyprland.start", function()
-	hl.exec_cmd(terminal)
+	-- hl.exec_cmd(terminal)
 	hl.exec_cmd("noctalia")
 	hl.exec_cmd("hyprctl eval \"hl.device({ name = 'elan071a:00-04f3:30fd-touchpad', enabled = false })\"")
 	hl.exec_cmd(
@@ -40,14 +42,14 @@ hl.config({
 		border_size = 0,
 
 		col = {
-			active_border = {
-				colors = {
-					"rgba(33ccffee)",
-					"rgba(00ff99ee)",
-				},
-				angle = 45,
-			},
-			inactive_border = "rgba(595959aa)",
+			-- active_border = {
+			-- 	colors = {
+			-- 		"rgba(33ccffee)",
+			-- 		"rgba(00ff99ee)",
+			-- 	},
+			-- 	angle = 45,
+			-- },
+			-- inactive_border = "rgba(595959aa)",
 		},
 
 		layout = "dwindle",
@@ -72,7 +74,7 @@ hl.config({
 			enabled = false,
 			range = 4,
 			render_power = 3,
-			color = "rgba(1a1a1aee)",
+			-- color = "rgba(1a1a1aee)",
 		},
 		dim_special = 0.0,
 	},
@@ -159,7 +161,7 @@ hl.window_rule({
 	pin = true,
 })
 
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("ghostty"))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. "+ b", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + c ", hl.dsp.window.close())
 
