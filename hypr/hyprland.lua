@@ -4,15 +4,12 @@ local terminal = "ghostty"
 local browser = "brave-origin"
 local mainMod = "ALT"
 
-require("noctalia").apply_theme()
-
 hl.on("hyprland.start", function()
-	-- hl.exec_cmd(terminal)
 	hl.exec_cmd("noctalia")
 	hl.exec_cmd("hyprctl eval \"hl.device({ name = 'elan071a:00-04f3:30fd-touchpad', enabled = false })\"")
-	hl.exec_cmd(
-		"/opt/brave-origin-bin/brave-origin --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod"
-	)
+	-- hl.exec_cmd(
+	-- 	"/opt/brave-origin-bin/brave-origin --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod"
+	-- )
 end)
 
 hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")
@@ -71,10 +68,10 @@ hl.config({
 		},
 
 		shadow = {
-			enabled = false,
+			enabled = true,
 			range = 4,
 			render_power = 3,
-			-- color = "rgba(1a1a1aee)",
+			color = 0xee1a1a1a,
 		},
 		dim_special = 0.0,
 	},
@@ -86,7 +83,12 @@ hl.config({
 	dwindle = {
 		preserve_split = true,
 		force_split = 2,
+		-- default_split_ratio = 1.33,
 	},
+
+	-- scrolling = {
+	-- 	fullscreen_on_one_column = false,
+	-- },
 
 	master = {
 		new_status = "master",
@@ -135,6 +137,8 @@ hl.config({
 	},
 })
 
+require("noctalia").apply_theme()
+
 -- hl.window_rule({ match = { class = "^()$", title = "^()$" } })
 -- hl.window_rule({ match = { title = "^(Volume Control)$" }, float = true, size = "(monitor_w*.45) (monitor_h*.45)" })
 
@@ -170,7 +174,7 @@ local ipc = "noctalia msg"
 hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
 hl.bind(mainMod .. "+a", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center"))
 hl.bind(mainMod .. "+SHIFT + a", hl.dsp.exec_cmd(ipc .. " settings-toggle"))
-hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exec_cmd(ipc .. " session lock"))
+hl.bind(mainMod .. " + SHIFT + e", hl.dsp.exit())
 
 -- Media keys
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. " volume-up"))
@@ -191,7 +195,6 @@ hl.bind(
 )
 
 hl.bind(mainMod .. " + SHIFT +  f", hl.dsp.window.fullscreen("0"))
-hl.bind(mainMod .. " + v", hl.dsp.exec_cmd("killall waybar || waybar"))
 
 hl.bind("META + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + f", hl.dsp.window.float({ action = "toggle" }))
@@ -227,7 +230,7 @@ hl.bind(mainMod .. " + d", hl.dsp.exec_cmd(ipc .. " brightness-up 2%"), repLock)
 hl.bind("Print", hl.dsp.exec_cmd(ipc .. " screenshot-region"))
 hl.bind("CTRL + Print", hl.dsp.exec_cmd(ipc .. " screenshot-fullscreen"))
 
-local mouse_enabled = true
+local mouse_enabled = false
 hl.bind(mainMod .. " + z", function()
 	if mouse_enabled == true then
 		hl.device({ name = "elan071a:00-04f3:30fd-touchpad", enabled = false })
@@ -238,6 +241,6 @@ hl.bind(mainMod .. " + z", function()
 	end
 end)
 
-hl.bind("SUPER + C", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind("SUPER + C", hl.dsp.window.move({ workspace = "special:scratchpad" }))
 -- To see the hidden window and workspace you can use:
-hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("magic"))
+hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("scratchpad"))

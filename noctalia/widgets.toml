@@ -9,5 +9,5 @@ show_label = false
 
 [widget.clock]
 format = "{:%-I:%M %p} {:%d-%b}"
-tooltip_format = "{:%d,%B,%A,%Y}"
+tooltip_format = "{:%d %B %A %Y}"
 

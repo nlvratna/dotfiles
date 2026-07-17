@@ -138,8 +138,8 @@
     "light": "Zed (Default)",
     "dark": "Zed (Default)"
   },
-  "ui_font_size": 15.0,
-  "buffer_font_size": 15.0,
+  "ui_font_size": 16.2,
+  "buffer_font_size": 16.5,
   //"theme": "Tokyo Night",
   //editor
   "disable_ai": true,
