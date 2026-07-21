@@ -146,6 +146,8 @@
   "format_on_save": "on",
   "formatter": "language_server",
   "restore_on_startup": "empty_tab",
+  // "show_signature_help_after_edits": true,
+  // "auto_signature_help": true,
   //lsp settings for go and zig for now
   "languages": {},
   "lsp": {

@@ -1,15 +1,13 @@
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = "1" })
 
 local terminal = "ghostty"
-local browser = "brave-origin"
+-- local browser = "brave-origin"
+local browser = "helium-browser"
 local mainMod = "ALT"
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("noctalia")
 	hl.exec_cmd("hyprctl eval \"hl.device({ name = 'elan071a:00-04f3:30fd-touchpad', enabled = false })\"")
-	-- hl.exec_cmd(
-	-- 	"/opt/brave-origin-bin/brave-origin --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod"
-	-- )
 end)
 
 hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")

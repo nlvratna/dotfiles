@@ -45,3 +45,5 @@ export MANPAGER="nvim +Man!"
 eval "$(mise activate zsh)"
 
 alias mt="touch mise.local.toml && mise trust"
+
+eval "$(direnv hook zsh)"
