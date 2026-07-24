@@ -1,6 +1,6 @@
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = "1" })
 
-local terminal = "ghostty"
+local terminal = "foot"
 -- local browser = "brave-origin"
 local browser = "helium-browser"
 local mainMod = "ALT"
@@ -69,7 +69,7 @@ hl.config({
 			enabled = true,
 			range = 4,
 			render_power = 3,
-			color = 0xee1a1a1a,
+			-- color = 0xee1a1a1a,
 		},
 		dim_special = 0.0,
 	},
