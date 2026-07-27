@@ -164,6 +164,17 @@
       "initialization_options": {
         "usePlaceholders": false
       }
+    },
+    "jdtls": {
+      "initialization_options": {},
+      "settings": {
+        "java": {
+          "complete": {
+            "guessMethodArguments": "off",
+            "overwrite": true,
+          },
+        },
+      },
     }
   }
 }
