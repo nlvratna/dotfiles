@@ -1,8 +1,10 @@
-[widget.brightness]
-scroll_step = 2
+[widget.brightness.actions]
+scroll_up = "brightness-up 2%"
+scroll_down = "brightness-down 2%"
 
-[widget.volume]
-scroll_step = 2
+[widget.volume.actions]
+scroll_up = "volume-up 2%"
+scroll_down = "volume-down 2%"
 
 [widget.network]
 show_label = false

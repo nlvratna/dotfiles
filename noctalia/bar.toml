@@ -42,4 +42,4 @@ capsule_opacity    = 0.35
 
 start  = ["control-center","spacer","media"]
 center = ["clock"]
-end    = ["tray", "clipboard","spacer", "network", "spacer","ram","spacer","bluetooth","spacer", "volume", "spacer","brightness", "spacer","battery","spacer", "notifications"]
+end    = ["tray", "clipboard","spacer", "network", "spacer","ram","spacer", "bluetooth","spacer", "volume", "spacer","brightness", "spacer","battery","spacer", "notifications"]
