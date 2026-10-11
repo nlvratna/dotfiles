@@ -9,7 +9,7 @@
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "ctrl-l": "editor::ToggleInlayHints",
+      "ctrl-i": "editor::ToggleInlayHints",
       "ctrl-y": "editor::ConfirmCompletion"
     }
   },
@@ -81,7 +81,7 @@
     "bindings": {
       "ctrl-z": "workspace::ToggleZoom",
       "ctrl-x": "tab_switcher::CloseSelectedItem",
-      "ctrl-a j ": "terminal_panel::Toggle",
+      "ctrl-a j": "workspace::NewCenterTerminal",
       "ctrl-shift-n": "workspace::Open",
       "ctrl-m": "workspace::ToggleLeftDock"
     }

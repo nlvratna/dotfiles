@@ -51,7 +51,7 @@ new_tmux_session_or_window() {
     local dir="$2"
 
     if ! has_session "$session"; then
-        tmux new-session -ds "$session" -c "$dir" "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8; exec \$SHELL"
+        tmux new-session -ds "$session" -c "$dir" 
     fi
 }
 

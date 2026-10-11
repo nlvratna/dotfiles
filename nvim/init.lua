@@ -1,5 +1,6 @@
 -- https://github.com/mrnugget/vimconfig/blob/master/nvim/init.lua
 --https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+
 -- require("vim._core.ui2").enable({
 --   enable = true,
 -- })
@@ -40,62 +41,9 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- -- https://github.com/smnatale/nvim_native/blob/main/lua/netrw.lua
--- vim.g.netrw_liststyle = 3 -- tree view
--- vim.g.netrw_banner = 0 -- hide the top banner
--- vim.g.netrw_winsize = 25 -- fix the left split width
--- vim.g.netrw_browse_split = 0 -- open files in the previous window
--- vim.g.netrw_altfile = 1 -- keep the alternate file correct
 
 vim.keymap.set("n", "-", ":Ex<CR>")
 
--- -- netrw's built-in `%` opens new files in the netrw window instead of
--- -- respecting `netrw_browse_split`. Override it to open in the previous window.
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "netrw",
---   callback = function()
---     vim.keymap.set("n", "%", function()
---       local fname = vim.fn.input("Enter filename: ")
---       if fname == "" then
---         return
---       end
---
---       local dir = vim.b.netrw_curdir or vim.fn.getcwd()
---       local path = dir .. "/" .. fname
---
---       if vim.fn.filereadable(path) == 1 or vim.fn.isdirectory(path) == 1 then
---         vim.notify("Already exists: " .. fname, vim.log.levels.WARN)
---         return
---       end
---
---       if fname:match("/$") then
---         vim.fn.mkdir(path, "p")
---         vim.cmd("edit")
---       else
---         local f = io.open(path, "w")
---         if not f then
---           vim.notify("Failed to create: " .. fname, vim.log.levels.ERROR)
---           return
---         end
---         f:close()
---
---         local escaped = vim.fn.fnameescape(path)
---         if vim.fn.winnr("#") == 0 then
---           vim.cmd("edit " .. escaped)
---         else
---           vim.cmd("wincmd p")
---           vim.cmd("edit " .. escaped)
---         end
---       end
---     end, {
---       buffer = true,
---       silent = true,
---       noremap = true,
---       desc = "Create file in previous window",
---     })
---   end,
--- })
---
 local opts = { noremap = true, silent = true }
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
@@ -178,6 +126,7 @@ vim.pack.add({
   "https://github.com/folke/lazydev.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/vague-theme/vague.nvim",
+  "https://github.com/tpope/vim-fugitive"
   -- "https://github.com/RRethy/base16-nvim",
 })
 
@@ -268,14 +217,6 @@ vim.diagnostic.config({
   float = { border = "rounded", source = "if_many" },
   -- float = false,
   underline = { severity = vim.diagnostic.severity.ERROR },
-  -- signs = vim.g.have_nerd_font and {
-  --   text = {
-  --     [vim.diagnostic.severity.ERROR] = "󰅚 ",
-  --     [vim.diagnostic.severity.WARN] = "󰀪 ",
-  --     [vim.diagnostic.severity.INFO] = "󰋽 ",
-  --     [vim.diagnostic.severity.HINT] = "󰌶 ",
-  --   },
-  -- } or {},
   virtual_text = false,
   update_in_insert = false,
   jump = {
