@@ -1,8 +1,7 @@
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = "1" })
 
 local terminal = "foot"
--- local browser = "brave-origin"
-local browser = "helium-browser"
+local browser = "brave-origin"
 local mainMod = "ALT"
 
 hl.on("hyprland.start", function()
@@ -10,8 +9,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprctl eval \"hl.device({ name = 'elan071a:00-04f3:30fd-touchpad', enabled = false })\"")
 end)
 
-hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")
-hl.env("XCURSOR_SIZE", "18")
+-- hl.env("XCURSOR_THEME", "BreezeX-RosePine-Linux")
+hl.env("XCURSOR_SIZE", "20")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
@@ -135,7 +134,7 @@ hl.config({
 	},
 })
 
-require("noctalia").apply_theme()
+-- require("noctalia").apply_theme()
 
 -- hl.window_rule({ match = { class = "^()$", title = "^()$" } })
 -- hl.window_rule({ match = { title = "^(Volume Control)$" }, float = true, size = "(monitor_w*.45) (monitor_h*.45)" })

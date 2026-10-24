@@ -34,13 +34,13 @@ vim.o.autoindent = true
 
 vim.o.backup = false
 vim.o.writebackup = false
+vim.opt.swapfile = false
 
 vim.o.incsearch = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
 
 vim.keymap.set("n", "-", ":Ex<CR>")
 
@@ -126,7 +126,7 @@ vim.pack.add({
   "https://github.com/folke/lazydev.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/vague-theme/vague.nvim",
-  "https://github.com/tpope/vim-fugitive"
+  "https://github.com/tpope/vim-fugitive",
   -- "https://github.com/RRethy/base16-nvim",
 })
 
@@ -365,7 +365,13 @@ require("conform").setup({
   },
 })
 
-require("fzf-lua").setup({ "telescope" })
+require("fzf-lua").setup({
+  "telescope",
+  files = {
+    no_ignore = false,
+  },
+})
+
 vim.keymap.set("n", "<leader>f", function()
   require("fzf-lua").files()
 end)
