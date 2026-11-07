@@ -356,7 +356,6 @@ require("conform").setup({
     lua = { "stylua" },
     python = { "black" },
     java = { "google-java-format" },
-    odin = { "odinfmt" },
   },
   format_on_save = {
     lsp_fallback = true,
